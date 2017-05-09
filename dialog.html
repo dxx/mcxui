@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>dialog弹框</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<!-- 单独引入css和js -->
+		<!--<link rel="stylesheet" type="text/css" href="css/mcxui.dialog.css"/>
+		<script type="text/javascript" src="js/mcxui.base.js"></script>
+		<script type="text/javascript" src="js/mcxui.dialog.js"></script>-->
+		<link rel="stylesheet" type="text/css" href="css/mcxui.css"/>
+		<!--<script type="text/javascript" src="js/mcxui.js"></script>-->
+		<!-- 实际开发使用mcxui.min.js替换上面的mcxui.js -->
+		<script type="text/javascript" src="js/mcxui.min.js"></script>
+		<style>
+			button{
+				font-size: 13px;
+				border: none;
+				background-color: #E2E2E2;
+				padding: 6px 12px;
+				border: 1px solid #CCCCCC;
+				border-radius: 3px;
+				outline: none;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<h5>警告框</h5>
+		<p>
+			<button id="button-alert">默认行为的alert</button>
+			<button id="button-alert-close">点击遮照可关闭的alert</button>
+			<button id="button-alert-style">指定样式的alert</button>
+			<button id="button-alert-animation">指定动画的alert</button>
+		</p>
+		<h5>确认框</h5>
+		<p>
+			<button id="button-confirm">默认行为的confirm</button>
+			<button id="button-confirm-btn">指定按钮的confirm</button>
+			<button id="button-confirm-style">指定样式的confirm</button>
+			<button id="button-confirm-animation">指定动画的confirm</button>
+			<button id="button-confirm-size">指定宽高的confirm</button>
+		</p>
+		<h5>弹出层</h5>
+		<p>
+			<button id="button-layer">默认行为的layer</button>
+			<button id="button-layer-other">不同风格的layer</button>
+			<button id="button-layer-content">指定内容的layer</button>
+		</p>
+		<h5>消息框</h5>
+		<p>
+			<button id="button-msg">默认行为的msg</button>
+			<button id="button-msg-time">指定消失时间的msg</button>
+			<button id="button-msg-style">指定样式的msg</button>
+			<button id="button-msg-animation">指定动画的msg</button>
+		</p>
+		<h5>提示框</h5>
+		<p>
+			<button id="button-tips">默认行为的tips</button>
+			<button id="button-tips-time">指定消失时间的tips</button>
+			<button id="button-tips-style">指定样式的tips</button>
+			<button id="button-tips-animation">指定动画的tips</button>
+			<br/><br/>
+			<button id="button-tips-top">上边出现的tips</button>
+			<button id="button-tips-bottom">下边出现的tips</button>
+			<button id="button-tips-left">左边出现的tips</button>
+			<button id="button-tips-right">右边出现的tips</button>
+		</p>
+		<h5>loading</h5>
+		<p>
+			<button id="button-loading">默认行为的loading</button>
+			<button id="button-loading-type">指定类型的loading</button>
+			<button id="button-loading-hint">指定提示内容的loading</button>
+			<button id="button-loading-close">3秒后关闭的loading</button>
+		</p>
+	</body>
+	<script type="text/javascript">
+		
+		//alert
+		
+		//可设置的参数
+		//width: 260,  //默认宽
+		//height: 146,  //默认高
+		//title："信息",  //标题。默认为"信息"
+		//showClose: true,  //是否显示关闭按钮。默认true
+		//shadeClose: true,  //点击阴影是否可关闭。默认false
+		//animationType: "bounce",  //动画：bounce，fade，zoom。默认bounce
+		//设置标题样式，css属性名采用驼峰命名规则
+		/*titleStyle: {
+			color: "#FFFFFF",
+			backgroundColor: "#4F4F4F",
+		},
+		//设置按钮样式，css属性名采用驼峰命名规则
+		buttonStyle: {
+			color: "#000000",
+			border: "1px solid #DEDEDE",
+			backgroundColor: "#EEEEEE",
+		}*/
+		document.getElementById("button-alert").onclick = function(){
+			mcxui.dialog.alert("hi, 我是alert");
+		};
+		document.getElementById("button-alert-close").onclick = function(){
+			mcxui.dialog.alert("hi, 我是alert", {
+				title: "点击阴影部分关闭我",
+				shadeClose: true,  //点击阴影可关闭
+			});
+		};
+		document.getElementById("button-alert-style").onclick = function(){
+			mcxui.dialog.alert("hi, 我是alert", {
+				title: "我是自定义样式的警告框哦",
+				shadeClose: true,  //点击阴影可关闭
+				//设置标题样式，css属性名采用驼峰命名规则
+				titleStyle: {
+					color: "#FFFFFF",
+					backgroundColor: "#4F4F4F",
+				},
+				//设置按钮样式，css属性名采用驼峰命名规则
+				buttonStyle: {
+					color: "#000000",
+					border: "1px solid #DEDEDE",
+					backgroundColor: "#EEEEEE",
+				}
+			});
+		};
+		document.getElementById("button-alert-animation").onclick = function(){
+			mcxui.dialog.alert("hi, 我是alert", {
+				shadeClose: true,  //点击阴影可关闭
+				animationType: "zoom",  //zoom动画
+			});
+		};
+		
+		//confirm
+		
+		//可设置的参数
+		//width: 260,  //默认宽
+		//height: 146,  //默认高
+		//title："信息",  //标题。默认为"信息"
+		//btn: ["确定", "取消"],  //按钮。默认["确定"，"取消"]
+		//showClose: true,  //是否显示关闭按钮。默认true
+		//shadeClose: true,  //点击阴影是否可关闭。默认false
+		//animationType: "zoom",  //动画：bounce，fade，zoom
+		//设置标题样式，css属性名采用驼峰命名规则
+		/*titleStyle: {
+			color: "#FFFFFF",
+			backgroundColor: "#4F4F4F"
+		},
+		//设置按钮样式，css属性名采用驼峰命名规则。每一个对象对应相应下标的按钮
+		buttonStyle: [{},{
+			color: "#000000",
+			border: "1px solid #DEDEDE",
+			backgroundColor: "#EEEEEE",
+		}],
+		//按钮点击回调
+		btnClick: function(index){  //index：按钮索引，从0开始
+			alert("你点击了第" + (index + 1) + "个按钮");
+		}*/
+		document.getElementById("button-confirm").onclick = function(){
+			mcxui.dialog.confirm("hi, 我是confirm");
+		};
+		document.getElementById("button-confirm-btn").onclick = function(){
+			var btn = ["我帅", "很帅", "非常帅"];
+			mcxui.dialog.confirm("我帅吗？", {
+				showClose: true,  //显示关闭按钮
+				shadeClose: true,  //点击阴影可关闭
+				btn: btn,  //按钮
+				//按钮点击回调
+				btnClick: function(index){  //index：按钮索引，从0开始
+					alert("你点击了" + btn[index]);
+				}
+			});
+		};
+		document.getElementById("button-confirm-style").onclick = function(){
+			mcxui.dialog.confirm("hi, 我是confirm", {
+				title: "我是自定义样式的确认框哦",
+				showClose: false,  //不显示关闭按钮
+				shadeClose: true,  //点击阴影可关闭
+				//设置标题样式，css属性名采用驼峰命名规则
+				titleStyle: {
+					color: "#FFFFFF",
+					backgroundColor: "#4F4F4F"
+				},
+				//设置按钮样式，css属性名采用驼峰命名规则。每一个对象对应相应下标的按钮
+				buttonStyle: [{
+						color: "#FFFFFF",
+						border: "1px solid #616161",
+						backgroundColor: "#4F4F4F"
+					},{
+						color: "#FFFFFF",
+						border: "1px solid #616161",
+						backgroundColor: "#4F4F4F"
+					}
+				]
+			});
+		};
+		document.getElementById("button-confirm-animation").onclick = function(){
+			mcxui.dialog.confirm("hi, 我是confirm",{
+				title: "我是你定义的动画哦",
+				showClose: true,  //显示关闭按钮
+				shadeClose: true,  //点击阴影可关闭
+				animationType: "zoom",  //使用zoom动画
+			});
+		};
+		document.getElementById("button-confirm-size").onclick = function(){
+			mcxui.dialog.confirm("hi, 我是confirm，爱我你就用用我，爱我你就点点我",{
+				title: "我是自定义身材的确认框哦",
+				width: 280,  //宽
+				height: 160,  //高
+				shadeClose: true  //点击阴影可关闭
+			});
+		};
+		
+		//layer
+		
+		//可设置的参数
+		//title: "标题",  //标题。默认为"信息"
+		//width: 500,  //默认宽
+		//height: 400,  //默认高
+		//shadeClose: false,  //点击阴影是否可关闭。默认false
+		//animationType: "bounce",  //动画：bounce，fade，zoom
+		//设置标题样式，css属性名采用驼峰命名规则
+		//titleStyle: {},
+		//style: 1,  //风格。1,2可选。默认为1
+		//html内容
+		//content: "hi, 我是layer层&nbsp;&nbsp;&nbsp;<button id=\"btn\">点我</button>",
+		//layer层添加到document后回调
+		/*afterLoad: function(){
+			document.getElementById("btn").onclick=function(){
+				alert("you click me");
+			};
+		}*/
+		document.getElementById("button-layer").onclick = function(){
+			mcxui.dialog.layer();
+		};
+		document.getElementById("button-layer-other").onclick = function(){
+			mcxui.dialog.layer({
+				title: "我是不用风格的层",
+				style: 2,  //风格
+			});
+		};
+		document.getElementById("button-layer-content").onclick = function(){
+			mcxui.dialog.layer({
+				title: "我是加载了内容的层",
+				//设置标题样式，css属性名采用驼峰命名规则
+				titleStyle: {
+					color: "#FFFFFF",
+					background: "#009F95"
+				},
+				//html内容
+				content: "hi, 我是layer层&nbsp;&nbsp;&nbsp;<button id=\"btn\">点我</button>",
+				//layer层添加到document后回调
+				afterLoad: function(){
+					document.getElementById("btn").onclick=function(){
+						alert("you click me");
+					};
+				}
+			});
+		};
+		
+		//msg
+		
+		//可设置参数
+		//time: 3, //消失时间。默认3秒
+		//style: {},  //样式，采用驼峰命名规则
+		//animationType: "zoom"  //动画：zoom，fade。默认zoom
+		document.getElementById("button-msg").onclick = function(){
+			mcxui.dialog.msg("hi, 我是message");
+		};
+		document.getElementById("button-msg-time").onclick = function(){
+			mcxui.dialog.msg("hi, 我是message", {
+				time: 2  //2秒后消失
+			});
+		};
+		document.getElementById("button-msg-style").onclick = function(){
+			mcxui.dialog.msg("hi, 我是自定义样式message", {
+				style: {color:"#000000", backgroundColor:"#FAFAFA", border:"1px solid #CCCCCC"}
+			});
+		};
+		document.getElementById("button-msg-animation").onclick = function(){
+			mcxui.dialog.msg("hi, 我是message", {
+				animationType: "fade"  //动画
+			});
+		};
+		
+		//tips
+		
+		//可设置参数
+		//time: 3, //消失时间。默认3秒
+		//direction: "right", //出现在目标元素的方向。left，top，right，bottom。默认right
+		//style: {},  //样式，采用驼峰命名规则
+		//animationType: "zoom"  //动画：zoom，fade。默认zoom
+		document.getElementById("button-tips").onclick = function(){
+			mcxui.dialog.tips("hi, 我是tips", "button-tips");
+		};
+		document.getElementById("button-tips-time").onclick = function(){
+			mcxui.dialog.tips("hi, 我是tips", "button-tips-time", {
+				time: 2  //2秒后消失
+			});
+		};
+		document.getElementById("button-tips-style").onclick = function(){
+			mcxui.dialog.tips("hi, 我是自定义样式的tips", "button-tips-style", {
+				style: {color:"#FFFFFF", backgroundColor:"#FF0000"}
+			});
+		};
+		document.getElementById("button-tips-animation").onclick = function(){
+			mcxui.dialog.tips("hi, 我是tips", "button-tips-animation", {
+				animationType: "fade"  //动画
+			});
+		};
+		document.getElementById("button-tips-top").onclick = function(){
+			mcxui.dialog.tips("hi, 我是上边出现的tips", "button-tips-top", {
+				direction: "top"  //出现在目标元素的上方
+			});
+		};
+		document.getElementById("button-tips-bottom").onclick = function(){
+			mcxui.dialog.tips("hi, 我是下边出现的tips", "button-tips-bottom", {
+				direction: "bottom"  //出现在目标元素的下方
+			});
+		};
+		document.getElementById("button-tips-left").onclick = function(){
+			mcxui.dialog.tips("hi, 我是左边出现tips", "button-tips-left", {
+				direction: "left"  //出现在目标元素的左方
+			});
+		};
+		document.getElementById("button-tips-right").onclick = function(){
+			mcxui.dialog.tips("hi, 我是右边出现的tips", "button-tips-right", {
+				direction: "right"  //出现在目标元素的右方
+			});
+		};
+		
+		//loading
+		
+		//可设置参数
+		//hint: "",  //提示内容
+		//type: 1,  //加载类型 1，2。默认1
+		//animationType: "zoom"  //动画：zoom，fade。默认zoom
+		document.getElementById("button-loading").onclick = function(){
+			mcxui.dialog.loading();
+		};
+		document.getElementById("button-loading-type").onclick = function(){
+			mcxui.dialog.loading({
+				type: 2
+			});
+		};
+		document.getElementById("button-loading-hint").onclick = function(){
+			mcxui.dialog.loading({
+				hint: "加载中..."
+			});
+		};
+		document.getElementById("button-loading-close").onclick = function(){
+			mcxui.dialog.loading();
+			setTimeout(function(){
+				mcxui.dialog.closeLoading();  //关闭所有已经显示的loading层
+			}, 3000);
+		};
+	</script>
+</html>

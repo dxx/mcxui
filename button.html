@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>按钮</title>
+		<!-- 单独引入css -->
+		<!--<link rel="stylesheet" type="text/css" href="css/mcxui.icon.css"/>
+		<link rel="stylesheet" type="text/css" href="css/mcxui.button.css"/>-->
+		<link rel="stylesheet" type="text/css" href="css/mcxui.css"/>
+		<style type="text/css">
+			body{
+				font-family: "微软雅黑";
+			}
+			.block{
+				width: 800px;
+				padding: 20px 20px;
+				border: 1px dashed #E2E2E2;
+			}
+			.inlay-icon{
+				margin-top: 5px;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+		<h4>按钮颜色</h4>
+		<div class="block">
+			<button class="mcxui-btn btn-default">默认按钮</button>
+			<button class="mcxui-btn btn-normal">蓝色按钮</button>
+			<button class="mcxui-btn btn-safety">绿色按钮</button>
+			<button class="mcxui-btn btn-warning">黄色按钮</button>
+			<button class="mcxui-btn btn-danger">红色按钮</button>
+			<button class="mcxui-btn btn-disabled">禁用按钮</button>
+		</div>
+		
+		<h4>按钮尺寸</h4>
+		<div class="block">
+			<button class="mcxui-btn btn-default btn-large">大型按钮</button>
+			<button class="mcxui-btn btn-default btn-middle">中型按钮</button>
+			<button class="mcxui-btn btn-default btn-small">小型按钮</button>
+			<br/><br>
+			<button class="mcxui-btn btn-safety btn-large">绿色按钮</button>
+			<button class="mcxui-btn btn-safety btn-middle">绿色按钮</button>
+			<button class="mcxui-btn btn-safety btn-small">绿色按钮</button>
+		</div>
+		
+		<h4>图标按钮</h4>
+		<div class="block">
+			<button class="mcxui-btn btn-default">
+				<i class="icon-search"></i>
+			</button>
+			<button class="mcxui-btn btn-default">
+				<i class="icon-plus"></i>
+			</button>
+			<button class="mcxui-btn btn-default">
+				<i class="icon-pencil"></i>
+			</button>
+			<button class="mcxui-btn btn-default">
+				<i class="icon-bin"></i>
+			</button>
+			<button class="mcxui-btn btn-default">
+				<i class="icon-bin2"></i>
+			</button>
+			
+			<button class="mcxui-btn btn-safety">
+				<i class="icon-search"></i>
+			</button>
+			<button class="mcxui-btn btn-safety">
+				<i class="icon-plus"></i>
+			</button>
+			<button class="mcxui-btn btn-safety">
+				<i class="icon-pencil"></i>
+			</button>
+			<button class="mcxui-btn btn-safety">
+				<i class="icon-bin"></i>
+			</button>
+			<button class="mcxui-btn btn-safety">
+				<i class="icon-bin2"></i>
+			</button>
+			
+			<button class="mcxui-btn btn-normal">
+				<i class="icon-search"></i>
+			</button>
+			<button class="mcxui-btn btn-normal">
+				<i class="icon-plus"></i>
+			</button>
+			<button class="mcxui-btn btn-normal">
+				<i class="icon-pencil"></i>
+			</button>
+			<button class="mcxui-btn btn-normal">
+				<i class="icon-bin"></i>
+			</button>
+			<button class="mcxui-btn btn-normal">
+				<i class="icon-bin2"></i>
+			</button>
+		</div>
+		<a href="icon.html" target="_blank" class="inlay-icon">内置图标</a>
+		
+		<h4>混搭按钮</h4>
+		<div class="block">
+			<button class="mcxui-btn btn-safety">
+				<i class="icon-search"></i>
+				搜索
+			</button>
+			<button class="mcxui-btn btn-safety">
+				<i class="icon-plus"></i>
+				添加
+			</button>
+			<button class="mcxui-btn btn-safety">
+				<i class="icon-pencil"></i>
+				修改
+			</button>
+			<button class="mcxui-btn btn-safety">
+				<i class="icon-bin"></i>
+				删除
+			</button>
+			<button class="mcxui-btn btn-disabled">
+				<i class="icon-bin2"></i>
+				删除
+			</button>
+		</div>
+		
+		<h4>按钮组</h4>
+		<div class="block">
+			<div class="mcxui-btn-group">
+				<button class="mcxui-btn btn-safety">查询</button>
+				<button class="mcxui-btn btn-safety">添加</button>
+				<button class="mcxui-btn btn-safety">修改</button>
+				<button class="mcxui-btn btn-safety">删除</button>
+			</div>
+			
+			<div class="mcxui-btn-group">
+				<button class="mcxui-btn btn-safety">
+				<i class="icon-search"></i>
+				搜索
+				</button>
+				<button class="mcxui-btn btn-safety">
+					<i class="icon-plus"></i>
+					添加
+				</button>
+				<button class="mcxui-btn btn-safety">
+					<i class="icon-pencil"></i>
+					修改
+				</button>
+				<button class="mcxui-btn btn-safety">
+					<i class="icon-bin"></i>
+					删除
+				</button>
+			</div>
+			
+			<div class="mcxui-btn-group">
+				<button class="mcxui-btn btn-safety">
+					<i class="icon-search"></i>
+				</button>
+				<button class="mcxui-btn btn-safety">
+					<i class="icon-plus"></i>
+				</button>
+				<button class="mcxui-btn btn-safety">
+					<i class="icon-pencil"></i>
+				</button>
+				<button class="mcxui-btn btn-safety">
+					<i class="icon-bin"></i>
+				</button>
+			</div>
+		</div>
+		
+		<h4>链接按钮</h4>
+		<div class="block">
+			<a href="http://www.baidu.com" target="_blank" class="mcxui-btn btn-safety">百度</a>
+		</div>
+		
+		<h4>提交按钮</h4>
+		<div class="block">
+			<form action="#">
+				<input type="submit" value="input提交" class="mcxui-btn btn-safety" />
+				<button type="submit" class="mcxui-btn btn-safety">button提交</button>
+			</form>
+		</div>
+	</body>
+</html>

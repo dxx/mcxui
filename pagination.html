@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>pagination分页</title>
+		<!-- 单独引入css和js -->
+		<!--<link rel="stylesheet" type="text/css" href="css/mcxui.pagination.css"/>
+		<script type="text/javascript" src="js/mcxui.base.js"></script>
+		<script type="text/javascript" src="js/mcxui.pagination.js"></script>-->
+		<link rel="stylesheet" type="text/css" href="css/mcxui.css"/>
+		<!--<script type="text/javascript" src="js/mcxui.js"></script>-->
+		<!-- 实际开发使用mcxui.min.js替换上面的mcxui.js -->
+		<script type="text/javascript" src="js/mcxui.min.js"></script>
+		<style type="text/css">
+			body{
+				font-family: "微软雅黑";
+				font-size: 14px;
+			}
+			/*
+			 * 自定义选中样式
+			 */
+			#customStyle.mcxui-pagination .pagination-operation span.current{
+				background-color: #1E90FF;
+			}
+		</style>
+	</head>
+	<body>
+		<h4>默认分页</h4>
+		<div id="pagination1">
+		</div>
+		
+		<h4>不显示跳转页</h4>
+		<div id="pagination2">
+		</div>
+		
+		<h4>不显示跳转页、首页和末页</h4>
+		<div id="pagination3">
+		</div>
+		
+		<h4>自定义选中样式</h4>
+		<div id="customStyle">
+		</div>
+		
+		<h4>指定页码数</h4>
+		<div id="customPages">
+		</div>
+		
+		<h4>form提交</h4>
+		<form id="pageForm"></form>
+		<div id="formPagination">
+		</div>
+		
+		<h4>ajax提交</h4>
+		<div id="ajaxPagination">
+		</div>
+	</body>
+	<script type="text/javascript">
+		mcxui.pagination.init("pagination1", {
+			pageNumber: 3,  //当前页
+			pageSize: 10,  //每页大小。默认为10
+			totalCount: 120  //总条数。默认为10
+		});
+		
+		mcxui.pagination.init("pagination2", {
+			showSkipPage: false,  //不显示跳转页。默认为true
+			pageNumber: 1,  //当前页
+			pageSize: 10,  //每页大小
+			totalCount: 80  //总条数
+		});
+		
+		mcxui.pagination.init("pagination3", {
+			showSkipPage: false,  //不显示跳转页。默认为true
+			showFirstLast: false,  //不显示首页和末页
+			pageNumber: 3,  //当前页
+			pageSize: 10,  //每页大小
+			totalCount: 80  //总条数
+		});
+		
+		mcxui.pagination.init("customStyle", {
+			showSkipPage: false,  //不显示跳转页。默认为true
+			showFirstLast: false,  //不显示首页和末页
+			pageNumber: 3,  //当前页
+			pageSize: 10,  //每页大小
+			totalCount: 80  //总条数
+		});
+		
+		mcxui.pagination.init("customPages", {
+			pageNumber: 5,  //当前页
+			pageSize: 10,  //每页大小。默认为10
+			totalCount: 120,  //总条数。默认为10
+			pages: 10  //显示的页码数。默认为5
+		});
+		
+		mcxui.pagination.init("formPagination", {
+			pageNumber: 1,  //当前页
+			pageSize: 10,  //每页大小
+			totalCount: 80,  //总条数
+			/* 绑定form的id
+			 * 点击时会增加name为pageNumber和pageSize两个隐藏域元素，然后提交form
+			 * 注意：onsubmit事件只有采用原始事件绑定模式才有效
+			 */
+			form: "pageForm"
+		});
+		
+		mcxui.pagination.init("ajaxPagination", {
+			pageNumber: 1,  //当前页
+			pageSize: 10,  //每页大小
+			totalCount: 80,  //总条数
+			ajax: {
+				url: "json/pagedata.json",  //ajax请求url
+				type: "GET",  //请求方式。GET或POST，默认为POST
+				/* 请求内容类型。默认为application/x-www-form-urlencoded
+				 * 支持application/x-www-form-urlencoded和application/json
+				 */
+				//contentType: "application/json",  
+				//分页请求前回调。param为参数对象，可添加请求参数，默认有pageNumber和pageSize两个参数
+				before: function(param){
+					//param.param = "参数";
+				},
+				//请求成功后调用
+				/*
+				 * data：接口返回的数据
+				 * page：分页对象
+				 * 属性如下
+				 * pageNumber: 当前页
+				 * pageSize: 每页大小
+				 * totalCount: 总条数
+				 * totalPage: 总页数
+				 */
+				success: function(data, page){
+					console.log(JSON.parse(data));
+					console.log(page);
+				},
+				//请求失败后调用
+				failure: function(){
+					alert("faulure");
+				}
+			}
+		});
+	</script>
+</html>

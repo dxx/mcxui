@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>tree树</title>
+		<!-- 单独引入css和js -->
+		<!--<link rel="stylesheet" type="text/css" href="css/mcxui.icon.css"/>
+		<link rel="stylesheet" type="text/css" href="css/mcxui.tree.css"/>
+		<script type="text/javascript" src="js/mcxui.base.js"></script>
+		<script type="text/javascript" src="js/mcxui.tree.js"></script>-->
+		<link rel="stylesheet" type="text/css" href="css/mcxui.css"/>
+		<!--<script type="text/javascript" src="js/mcxui.js"></script>-->
+		<!-- 实际开发使用mcxui.min.js替换上面的mcxui.js -->
+		<script type="text/javascript" src="js/mcxui.min.js"></script>
+		<style type="text/css">
+			body{
+				font-family: "微软雅黑";
+			}
+			.piece{
+				width: 25%;
+				float: left;
+			}
+			.piece h5{
+				font-size: 16px;
+			}
+			.container{
+				width: 200px;
+				height: 300px;
+				padding: 10px 10px;
+				border: 1px solid #E2E2E2;
+				overflow: auto;
+			}
+			#checkedNode, #uncheckedNode{
+				font-size: 13px;
+			}
+			
+			.customer{
+				width: 200px;
+				height: 300px;
+				padding: 10px 10px;
+				border: 1px solid #E2E2E2;
+				overflow: auto;
+			}
+			
+			
+			/*自定义tree样式*/
+			.customer ul.mcxui-tree{
+				color: #2E8B57;
+			}
+			.customer ul.mcxui-tree .tree-item a.tree-node{
+				color: #2E8B57;
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="piece">
+		<h5>根据html结构，生成tree</h5>
+		<div class="container">
+			<ul class="mcxui-tree" id="tree">
+				<li class="tree-item">
+					<i class="tree-icon"></i>
+					<a class="tree-node">
+						<i class="tree-icon"></i>
+						<span>我的收藏</span>
+					</a>
+					<ul class="tree-child">
+						<li class="tree-item">
+							<i class="tree-icon"></i>
+							<a class="tree-node">
+								<i class="tree-icon"></i>
+								<span>动作片</span>
+							</a>
+						</li>
+						<li class="tree-item">
+							<i class="tree-icon"></i>
+							<a class="tree-node">
+								<i class="tree-icon"></i>
+								<span>悬疑片</span>
+							</a>
+						</li>
+						<li class="tree-item">
+							<i class="tree-icon"></i>
+							<a class="tree-node">
+								<i class="tree-icon"></i>
+								<span>惊辣片</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="tree-item">
+					<i class="tree-icon"></i>
+					<a class="tree-node">
+						<i class="tree-icon"></i>
+						<span>收件箱</span>
+					</a>
+					<ul class="tree-child">
+						<li class="tree-item">
+							<i class="tree-icon"></i>
+							<a class="tree-node">
+								<i class="tree-icon"></i>
+								<span>QQ邮箱</span>
+							</a>
+						</li>
+						<li class="tree-item">
+							<i class="tree-icon"></i>
+							<a class="tree-node">
+								<i class="tree-icon"></i>
+								<span>新浪邮箱</span>
+							</a>
+						</li>
+						<li class="tree-item">
+							<i class="tree-icon"></i>
+							<a class="tree-node">
+								<i class="tree-icon"></i>
+								<span>189邮箱</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="tree-item">
+					<i class="tree-icon"></i>
+					<a class="tree-node">
+						<i class="tree-icon"></i>
+						<span>文件夹</span>
+					</a>
+					<ul class="tree-child">
+						<li class="tree-item">
+							<i class="tree-icon"></i>
+							<a class="tree-node">
+								<i class="tree-icon"></i>
+								<span>子文件夹1</span>
+							</a>
+							<ul class="tree-child">
+								<li class="tree-item">
+									<i class="tree-icon"></i>
+									<a class="tree-node">
+										<i class="tree-icon"></i>
+										<span>子文件1</span>
+									</a>
+								</li>
+								<li class="tree-item">
+									<i class="tree-icon"></i>
+									<a class="tree-node">
+										<i class="tree-icon"></i>
+										<span>子文件2</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="tree-item">
+							<i class="tree-icon"></i>
+							<a class="tree-node">
+								<i class="tree-icon"></i>
+								<span>子文件夹2</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="tree-item">
+					<i class="tree-icon"></i>
+					<a class="tree-node tree-expand" href="http://www.baidu.com">
+						<i class="tree-icon"></i>
+						<span>默认展开的节点</span>
+					</a>
+					<ul class="tree-child">
+						<li class="tree-item">
+							<i class="tree-icon"></i>
+							<a class="tree-node">
+								<i class="tree-icon"></i>
+								<span>节点1</span>
+							</a>
+						</li>
+						<li class="tree-item">
+							<i class="tree-icon"></i>
+							<a class="tree-node">
+								<i class="tree-icon"></i>
+								<span>节点2</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="tree-item">
+					<i class="tree-icon"></i>
+					<a class="tree-node" href="http://www.baidu.com">
+						<i class="tree-icon"></i>
+						<span>点我能获取链接哦</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		</div>
+		
+		<div class="piece">
+		<h5>点击跳转的tree</h5>
+		<div class="container">
+			<ul class="mcxui-tree" id="linkTree">
+				<li class="tree-item">
+					<i class="tree-icon"></i>
+					<a class="tree-node">
+						<i class="tree-icon"></i>
+						<span>我的收藏</span>
+					</a>
+					<ul class="tree-child">
+						<li class="tree-item">
+							<i class="tree-icon"></i>
+							<a class="tree-node" href="http://www.baidu.com">
+								<i class="tree-icon"></i>
+								<span>百度</span>
+							</a>
+						</li>
+						<li class="tree-item">
+							<i class="tree-icon"></i>
+							<a class="tree-node" href="http://www.sina.com.cn/">
+								<i class="tree-icon"></i>
+								<span>新浪</span>
+							</a>
+						</li>
+						<li class="tree-item">
+							<i class="tree-icon"></i>
+							<a class="tree-node" href="https://www.taobao.com/">
+								<i class="tree-icon"></i>
+								<span>淘宝</span>
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		</div>
+		
+		<div class="piece">
+			<h5>根据json生成tree</h5>
+			<div class="container" id="treeContainer"></div>
+		</div>
+		
+		<div class="piece">
+			<h5>自定义tree样式</h5>
+			<div class="customer" id="customer">
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		//根据id初始化tree
+		mcxui.tree.init("tree", {
+			enableLink: false,  //禁用链接跳转。默认true
+			//tree点击时触发。enableLink为false时有效
+			treeClick: function(tree){
+				console.log(tree);
+				alert("当前节点：id:" + tree.id + " name:" + tree.name + " url:" + tree.url);
+			}
+		});
+		
+		//tree默认可跳转，如需跳转在a标签上增加href属性指定跳转的地址
+		mcxui.tree.init("linkTree");
+		
+		/* json数据格式如下
+		 * parentId为0表示根节点
+		 * expand:true表示展开该节点
+		 */
+		var data = [
+			{id:1, name:"收件箱", url:"", parentId:0, expand:true},
+			{id:1001, name:"QQ邮箱", url:"", parentId:1},
+			{id:1002, name:"189邮箱", url:"", parentId:1},
+			{id:1003, name:"新浪邮箱", url:"", parentId:1},
+			{id:100101, name:"已发送", url:"", parentId:1001},
+			{id:100102, name:"已删除", url:"", parentId:1001},
+			{id:100103, name:"垃圾箱", url:"", parentId:1001},
+			{id:2, name:"文件夹", url:"", parentId:0},
+			{id:100201, name:"子文件夹1", url:"", parentId:2},
+			{id:100202, name:"子文件夹2", url:"", parentId:2},
+			{id:100203, name:"子文件夹3", url:"", parentId:2}
+		];
+		
+		//treeContainer为tree容器的id。当设置data参数时，第一参数表示容器的id
+		mcxui.tree.init("treeContainer", {
+			enableLink: false,  //禁用链接跳转
+			//tree点击时触发
+			treeClick: function(treeNode){  //treeNode表示节点信息
+				console.log(treeNode);
+				alert("当前节点：id: " + treeNode.id + " name: " + treeNode.name + " url: " + treeNode.url);
+			}
+		}, data);
+		
+		mcxui.tree.init("customer", {
+			enableLink: false,  //禁用链接跳转
+			//tree点击时触发
+			treeClick: function(treeNode){  //treeNode表示节点信息
+				console.log(treeNode);
+				alert("当前节点：id: " + treeNode.id + " name: " + treeNode.name + " url: " + treeNode.url);
+			}
+		}, data);
+	</script>
+</html>

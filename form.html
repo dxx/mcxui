@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>form表单</title>
+		<!-- 单独引入css和js -->
+		<!--<link rel="stylesheet" type="text/css" href="css/mcxui.icon.css"/>
+		<link rel="stylesheet" type="text/css" href="css/mcxui.form.css"/>
+		<link rel="stylesheet" type="text/css" href="css/mcxui.button.css"/>
+		<script type="text/javascript" src="js/mcxui.base.js"></script>
+		<script type="text/javascript" src="js/mcxui.form.js"></script>-->
+		<link rel="stylesheet" type="text/css" href="css/mcxui.css"/>
+		<!--<script type="text/javascript" src="js/mcxui.js"></script>-->
+		<!-- 实际开发使用mcxui.min.js替换上面的mcxui.js -->
+		<script type="text/javascript" src="js/mcxui.min.js"></script>
+		<style type="text/css">
+			body{
+				font-family: "微软雅黑";
+				font-size: 14px;
+			}
+			.block{
+				width: 600px;
+				padding: 20px 20px;
+				border: 1px dashed #E2E2E2;
+			}
+			.line{
+				display: inline-block;
+				width: 49%;
+			}
+			.all-check{
+				margin-bottom: 10px;
+			}
+			.warn{
+				margin: 10px 0;
+				color: #DD524D;
+			}
+		</style>
+	</head>
+	<body>
+		<h4>默认表单排列</h4>
+		<div class="block">
+			<form class="mcxui-form">
+				<div class="mcxui-form-item">
+					<label for="username">用户名</label>
+					<input type="text" name="username" placeholder="输入用户名" class="mcxui-input"/>
+				</div>
+				<div class="mcxui-form-item">
+					<label for="password">密码</label>
+					<input type="password" name="password" placeholder="输入密码" class="mcxui-input"/>
+				</div>
+				<div class="mcxui-form-item">
+					<label>城市</label>
+					<select name="city" class="mcxui-select">
+						<option value="beijing">北京</option>
+						<option value="shanghai" >上海</option>
+						<option value="guanzhou">广州</option>
+						<option value="changsha">长沙</option>
+						<option value="hangzhou">杭州</option>
+						<option value="tianjin">天津</option>
+					</select>
+				</div>
+				<div class="mcxui-form-item">
+					<label>性别</label>
+					<div>
+						<input type="radio" name="sex" value="male" class="mcxui-radio" checked="checked" title="男"/>
+						<input type="radio" name="sex" value="female" class="mcxui-radio" title="女"/>
+					</div>
+				</div>
+				<div class="mcxui-form-item">
+					<label>水果</label>
+					<div>
+						<input type="checkbox" name="fruit" value="mango" class="mcxui-checkbox" checked="checked" title="芒果"/>
+						<input type="checkbox" name="fruit" value="watermelon" class="mcxui-checkbox" title="西瓜"/>
+						<input type="checkbox" name="fruit" value="apple" class="mcxui-checkbox" title="苹果"/>
+						<input type="checkbox" name="fruit" value="pear" class="mcxui-checkbox" title="梨子"/>
+					</div>
+				</div>
+				<div class="mcxui-form-item">
+					<label for="description" >描述</label>
+					<textarea name="description" id="description" cols="30" rows="5" placeholder="输入内容" class="mcxui-textarea"></textarea>
+				</div>
+			</form>
+		</div>
+		
+		<h4>水平表单排列</h4>
+		<div class="block">
+			<form class="mcxui-form-horizontal">
+				<div class="mcxui-form-item">
+					<label>用户名</label>
+					<input type="text" name="username" placeholder="输入用户名" class="mcxui-input"/>
+				</div>
+				<div class="mcxui-form-item">
+					<label>email</label>
+					<input type="text" name="email" placeholder="输入email"  class="mcxui-input"/>
+				</div>
+				<div class="mcxui-form-item">
+					<input type="submit" value="提交" class="mcxui-btn btn-safety"/>
+				</div>
+			</form>
+		</div>
+		
+		<h4>垂直表单排列</h4>
+		<div class="block">
+			<form class="mcxui-form-vertical">
+				<div class="mcxui-form-item">
+					<label class="mcxui-form-label">用户名</label>
+					<div class="mcxui-input-block">
+						<input type="text" name="username" placeholder="输入用户名" class="mcxui-input"/>
+					</div>
+				</div>
+				<div class="mcxui-form-item">
+					<label class="mcxui-form-label">email</label>
+					<div class="mcxui-input-block">
+						<input type="text" name="email" placeholder="输入email" class="mcxui-input"/>
+					</div>
+				</div>
+				<div class="mcxui-form-item">
+					<label class="mcxui-form-label">城市</label>
+					<div class="mcxui-input-block">
+						<select name="city1" class="mcxui-select">
+							<option value="beijing">北京</option>
+							<option value="shanghai" selected="selected">上海</option>
+							<option value="guanzhou">广州</option>
+							<option value="changsha">长沙</option>
+							<option value="hangzhou">杭州</option>
+							<option value="tianjin">天津</option>
+						</select>
+					</div>
+				</div>
+				<div class="mcxui-form-item">
+					<label class="mcxui-form-label">性别</label>
+					<div class="mcxui-radios">
+						<input type="radio" name="sex1" value="male" class="mcxui-radio" checked="checked" title="男"/>
+						<input type="radio" name="sex1" value="female" class="mcxui-radio" title="女"/>
+					</div>
+				</div>
+				<div class="mcxui-form-item">
+					<label class="mcxui-form-label">水果</label>
+					<div class="mcxui-checkboxs">
+						<input type="checkbox" name="fruit1" value="mango" class="mcxui-checkbox" checked="checked" title="芒果"/>
+						<input type="checkbox" name="fruit1" value="watermelon" class="mcxui-checkbox" title="西瓜"/>
+						<input type="checkbox" name="fruit1" value="apple" class="mcxui-checkbox" title="苹果"/>
+						<input type="checkbox" name="fruit1" value="pear" class="mcxui-checkbox" title="梨子"/>
+					</div>
+				</div>
+				<div class="mcxui-form-item">
+					<label class="mcxui-form-label">描述</label>
+					<div class="mcxui-input-block">
+						<textarea name="description" cols="30" rows="5" placeholder="输入内容" class="mcxui-textarea"></textarea>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		<h4>混合表单排列</h4>
+		<div class="block">
+			<form class="mcxui-form-vertical">
+				<div class="mcxui-form-item">
+					<label class="mcxui-form-label">用户名</label>
+					<div class="mcxui-input-block">
+						<input type="text" name="username" placeholder="输入用户名" class="mcxui-input"/>
+					</div>
+				</div>
+				<div class="mcxui-form-item">
+					<div class="mcxui-item-inline">
+						<label class="mcxui-form-label">email</label>
+						<input type="text" name="email" placeholder="输入email" class="mcxui-input"/>
+					</div>
+					<div class="mcxui-item-inline">
+						<label class="mcxui-form-label">手机号</label>
+						<input type="text" name="phone" placeholder="输入手机号" class="mcxui-input"/>
+					</div>
+				</div>
+				<div class="mcxui-form-item">
+					<div class="mcxui-item-inline">
+						<label class="mcxui-form-label">水果</label>
+						<div class="mcxui-checkboxs">
+							<input type="checkbox" name="fruit2" value="mango" class="mcxui-checkbox" checked="checked" title="芒果"/>
+							<input type="checkbox" name="fruit2" value="watermelon" class="mcxui-checkbox" title="西瓜"/>
+							<input type="checkbox" name="fruit2" value="apple" class="mcxui-checkbox" title="苹果"/>
+						</div>
+					</div>
+					<div class="mcxui-item-inline">
+						<label class="mcxui-form-label">性别</label>
+						<div class="mcxui-radios">
+							<input type="radio" name="sex2" value="male" class="mcxui-radio" checked="checked" title="男"/>
+							<input type="radio" name="sex2" value="female" class="mcxui-radio" title="女"/>
+						</div>
+					</div>
+				</div>
+				<div class="mcxui-form-item">
+					<div class="mcxui-item-inline">
+						<label class="mcxui-form-label">禁用的输入框</label>
+						<input type="text" class="mcxui-input disabled" disabled="disabled"/>
+					</div>
+					<div class="mcxui-item-inline">
+						<label class="mcxui-form-label">禁用的文本框</label>
+						<textarea class="mcxui-textarea disabled" disabled="disabled"></textarea>
+					</div>
+				</div>
+				<div class="mcxui-form-item">
+					<label class="mcxui-form-label">描述</label>
+					<div class="mcxui-input-block">
+						<textarea name="description" cols="30" rows="5" placeholder="输入内容" class="mcxui-textarea"></textarea>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		<h4>表单元素</h4>
+		<div class="block">
+			<h5>输入框</h5>
+			<div>
+				<input type="text" name="username" class="mcxui-input"/>
+				<br/>
+				<input type="text" name="username" readonly="readonly" class="mcxui-input"/>
+				<br/>
+				<input type="text" name="username" class="mcxui-input disabled" disabled="disabled"/>
+				<br/>
+				<div>辅助文字</div>
+				<br/>
+				<div class="mcxui-form-item">
+					<input type="text" name="username" class="mcxui-input"/>
+					<span class="mcxui-hint-block">这里是辅助文字</span>
+				</div>
+			</div><br/>
+			<div>禁用输入框添加disabled样式同时添加disabled属性</div>
+			
+			<h5>下拉框</h5>
+			<div>
+				<div>单选</div>
+				<br/>
+				<select name="se" class="mcxui-select">
+					<option value="beijing">北京</option>
+					<option value="shanghai">上海</option>
+					<option value="guanzhou">广州</option>
+					<option value="changsha">长沙</option>
+					<option value="hangzhou">杭州</option>
+					<option value="tianjin">天津</option>
+				</select>
+				<br/>
+				<div>多选</div>
+				<br/>
+				<select name="mulse" class="mcxui-select" multiple>
+					<option value="beijing" selected="selected">北京</option>
+					<option value="shanghai" selected="selected">上海</option>
+					<option value="guanzhou">广州</option>
+					<option value="changsha">长沙</option>
+					<option value="hangzhou">杭州</option>
+					<option value="tianjin">天津</option>
+				</select>
+				<br/>
+				<div>绑定change事件的下拉框，只适用于单选</div>
+				<br/>
+				<select id="cs" name="cs" class="mcxui-select">
+					<option value="beijing">北京</option>
+					<option value="shanghai">上海</option>
+					<option value="guanzhou">广州</option>
+					<option value="changsha">长沙</option>
+					<option value="hangzhou">杭州</option>
+					<option value="tianjin">天津</option>
+				</select>
+				<br/>
+				<div>两级联动</div>
+				<br/>
+				<div>
+					<div class="line">
+						<select id="shengfen" name="shengfen" class="mcxui-select">
+							<option value="beijing">北京</option>
+							<option value="shanghai">上海</option>
+							<option value="hunan">湖南</option>
+							<option value="guangdong">广东</option>
+						</select>
+					</div>
+					<div class="line">
+						<select id="chengshi" name="chengshi">
+							<option value="beijing">北京</option>
+						</select>
+					</div>
+				<script type="text/javascript">
+					var provinces = ["北京", "上海", "湖南", "广东"];
+					var citys = [["北京"],["上海"],["长沙","衡阳", "邵阳 "],["广州", "深圳", "佛山"]];
+					window.onload = function(e){
+						document.getElementById("shengfen").onchange = function(e){
+							var city = citys[this.selectedIndex];
+							var citySelect = document.getElementById("chengshi");
+							citySelect.innerHTML = "";
+							for(var i = 0; i < city.length; i++){
+								var option = document.createElement("option");
+								option.innerHTML = city[i];
+								citySelect.appendChild(option);
+							}
+							//传入select元素对象初始化select
+							mcxui.form.select(citySelect);
+						}
+						//传入id初始化select
+						mcxui.form.select("chengshi");  //window加载完后初始化select，也可添加mcxui-select初始化select
+					}
+				</script>
+				</div>
+			</div>
+			
+			<h5>单选按钮</h5>
+			<div>
+				<input type="radio" name="ra" value="0" class="mcxui-radio" checked="checked" title="男"/>
+				<input type="radio" name="ra" value="1" class="mcxui-radio" title="女"/>
+				<input type="radio" name="unallowable-radio" class="mcxui-radio" title="禁用的单选按钮" disabled="disabled"/>
+			</div>
+			<br/>
+			<div>如需默认选中，添加checked属性。禁用单选按钮添加disabled属性</div>
+			
+			<h5>复选框</h5>
+			<div>
+				<input type="checkbox" name="ck" value="mango" class="mcxui-checkbox" checked="checked" title="芒果"/>
+				<input type="checkbox" name="ck" value="watermelon" class="mcxui-checkbox" title="西瓜"/>
+				<input type="checkbox" name="ck" value="apple" class="mcxui-checkbox" title="苹果"/>
+				<input type="checkbox" name="ck" value="pear" class="mcxui-checkbox" title="梨子"/>
+				<input type="checkbox" name="unallowable-checkbox" class="mcxui-checkbox" title="禁用的复选框" disabled="disabled"/>
+			</div>
+			<br/>
+			<div>如需默认选中，添加checked属性。禁用复选框添加disabled属性</div>
+			<br/>
+			<div>全选</div>
+			<br/>
+			<div class="all-check">
+				<input type="checkbox" value="1" class="mcxui-checkbox" mcxui-group="checkall"/>
+				<span>点击全选或全不选</span>
+			</div>
+			<div class="all-check">
+				<input type="checkbox" name="checkall" value="1" class="mcxui-checkbox" mcxui-allcheck/>
+			</div>
+			<div class="all-check">
+				<input type="checkbox" name="checkall" value="2" class="mcxui-checkbox" mcxui-allcheck/>
+			</div>
+			<div class="all-check">
+				<input type="checkbox" name="checkall" value="3" class="mcxui-checkbox" mcxui-allcheck/>
+			</div>
+			
+			<div class="warn">注意：select、radio、checkbox添加对应的class，window加载完成后默认初始化，该功能需要依赖js</div>
+			
+			<h5>文本域</h5>
+			<div>
+				<textarea cols="30" rows="5" class="mcxui-textarea"></textarea>
+				<br/>
+				<textarea cols="30" rows="5" readonly class="mcxui-textarea"></textarea>
+				<br/>
+				<textarea cols="30" rows="5" class="mcxui-textarea disabled" disabled="disabled"></textarea>
+			</div><br/>
+			<div>禁用文本域添加disabled样式同时添加disabled属性</div>
+			
+			<h5>输入框校验状态</h5>
+			<div>
+				<div>成功状态</div>
+				<br/>
+				<div class="mcxui-form-item success">
+					<input type="text" class="mcxui-input"/>
+					<span class="mcxui-hint-block">成功提示内容</span>
+				</div>
+				<br/>
+				<div>警告状态</div>
+				<br/>
+				<div class="mcxui-form-item warning">
+					<input type="text" class="mcxui-input"/>
+					<span class="mcxui-hint-block">警告提示内容</span>
+				</div>
+				<br/>
+				<div>错误状态</div>
+				<br/>
+				<div class="mcxui-form-item error">
+					<input type="text" class="mcxui-input"/>
+					<span class="mcxui-hint-block">错误提示内容</span>
+				</div>
+			</div>
+			<br/>
+		</div>
+	</body>
+	<script>
+		document.getElementById("cs").onchange = function(e){
+			alert("你当前所选的城市：" + this.value);
+		};
+		/*setTimeout(function(){
+			mcxui.form.select("cs");
+		}, 3000);*/
+	</script>
+</html>

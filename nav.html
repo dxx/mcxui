@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>nav导航菜单</title>
+		<!-- 单独引入css和js -->
+		<!--<link rel="stylesheet" type="text/css" href="css/mcxui.icon.css"/>
+		<link rel="stylesheet" type="text/css" href="css/mcxui.nav.css"/>
+		<script type="text/javascript" src="js/mcxui.base.js"></script>
+		<script type="text/javascript" src="js/mcxui.nav.js"></script>-->
+		<link rel="stylesheet" type="text/css" href="css/mcxui.css"/>
+		<!--<script type="text/javascript" src="js/mcxui.js"></script>-->
+		<!-- 实际开发使用mcxui.min.js替换上面的mcxui.js -->
+		<script type="text/javascript" src="js/mcxui.min.js"></script>
+		<style type="text/css">
+			body{
+				font-family: "微软雅黑";
+			}
+			.piece{
+				width: 25%;
+				float: left;
+			}
+			.container{
+				width: 200px;
+				height: 500px;
+			}
+			
+			/*
+			 * 自定义nav样式
+			 */
+			.customstyle ul.mcxui-nav{
+				background-color: #FBFBFB;
+			}
+			.customstyle ul.mcxui-nav .nav-item.nav-current{
+				background-color: #F2F2F2;
+			}		
+			.customstyle ul.mcxui-nav .nav-item a{
+				color: #000000;
+			}
+			.customstyle ul.mcxui-nav .nav-item a:hover{
+				color: #000000;
+				background-color: #F2F2F2;
+			}
+			.customstyle ul.mcxui-nav .nav-item a.nav-active{
+				color: #FFFFFF;
+				background-color: #2E8B57;
+			}
+			.customstyle ul.mcxui-nav .nav-item a.choose{
+				color: #000000;
+				background-color: #F2F2F2;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="piece">
+			<h4>默认导航</h4>
+			<!--div容器用来固定accordion宽高，也可以采用行内样式定义宽高-->
+			<div class="container">
+				<ul class="mcxui-nav" id="nav">
+					<li class="nav-item">
+						<a>菜单1</a>
+						<ul class="nav-child">
+							<li class="nav-item">
+								<a>子菜单1</a>
+							</li>
+							<li class="nav-item">
+								<a>子菜单2</a>
+								<ul class="nav-child">
+									<li class="nav-item">
+										<a>子菜单2-1</a>
+									</li>
+									<li class="nav-item">
+										<a>子菜单2-2</a>
+									</li>
+									<li class="nav-item">
+										<a>子菜单2-3</a>
+									</li>
+								</ul>
+							</li>
+							<li class="nav-item"><a>子菜单3</a></li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a>菜单2</a>
+						<ul class="nav-child">
+							<li class="nav-item">
+								<a>子菜单2-1</a>
+							</li>
+							<li class="nav-item">
+								<a>子菜单2-2</a>
+							</li>
+							<li class="nav-item">
+								<a>子菜单2-3</a>
+							</li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a>菜单3</a>
+						<ul class="nav-child">
+							<li class="nav-item">
+								<a>子菜单3-1</a>
+							</li>
+							<li class="nav-item">
+								<a>子菜单3-2</a>
+							</li>
+							<li class="nav-item">
+								<a>子菜单3-3</a>
+							</li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a href="#">菜单4</a>
+					</li>
+					<li class="nav-item">
+						<a href="#">菜单5</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="piece">
+			<h4>展开指定菜单的导航</h4>
+			<div class="container">
+				<ul class="mcxui-nav" id="navExpand">
+					<li class="nav-item">
+						<a class="nav-expand">添加.nav-expand展开</a>
+						<ul class="nav-child">
+							<li class="nav-item">
+								<a>子菜单1</a>
+							</li>
+							<li class="nav-item">
+								<a>子菜单2</a>
+								<ul class="nav-child">
+									<li class="nav-item">
+										<a>子菜单2-1</a>
+									</li>
+									<li class="nav-item">
+										<a>子菜单2-2</a>
+									</li>
+									<li class="nav-item">
+										<a>子菜单2-3</a>
+									</li>
+								</ul>
+							</li>
+							<li class="nav-item"><a>子菜单3</a></li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a href="#">菜单3</a>
+					</li>
+					<li class="nav-item">
+						<a href="#">菜单4</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="piece">
+			<h4>选中指定菜单的导航</h4>
+			<div class="container">
+				<ul class="mcxui-nav" id="navChoose">
+					<li class="nav-item">
+						<a>可展开的菜单</a>
+						<ul class="nav-child">
+							<li class="nav-item">
+								<a>子菜单1</a>
+							</li>
+							<li class="nav-item">
+								<a>子菜单2</a>
+							</li>
+							<li class="nav-item"><a>子菜单3</a></li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a href="#" class="nav-active">添加.nav-active选中我</a>
+					</li>
+					<li class="nav-item">
+						<a href="#">菜单2</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="piece">
+			<h4>自定义样式</h4>
+			<div class="container customstyle">
+				<ul class="mcxui-nav" id="customNav">
+					<li class="nav-item">
+						<a>菜单1</a>
+						<ul class="nav-child">
+							<li class="nav-item">
+								<a>子菜单1</a>
+							</li>
+							<li class="nav-item">
+								<a>子菜单2</a>
+								<ul class="nav-child">
+									<li class="nav-item">
+										<a>子菜单2-1</a>
+									</li>
+									<li class="nav-item">
+										<a>子菜单2-2</a>
+									</li>
+									<li class="nav-item">
+										<a>子菜单2-3</a>
+									</li>
+								</ul>
+							</li>
+							<li class="nav-item"><a>子菜单3</a></li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a>菜单2</a>
+						<ul class="nav-child">
+							<li class="nav-item">
+								<a>子菜单2-1</a>
+							</li>
+							<li class="nav-item">
+								<a>子菜单2-2</a>
+							</li>
+							<li class="nav-item">
+								<a>子菜单2-3</a>
+							</li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a>菜单3</a>
+						<ul class="nav-child">
+							<li class="nav-item">
+								<a>子菜单3-1</a>
+							</li>
+							<li class="nav-item">
+								<a>子菜单3-2</a>
+							</li>
+							<li class="nav-item">
+								<a>子菜单3-3</a>
+							</li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a href="#" class="nav-active">菜单4</a>
+					</li>
+					<li class="nav-item">
+						<a href="#">菜单5</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		mcxui.nav.init("nav");
+		
+		mcxui.nav.init("navExpand");
+		
+		mcxui.nav.init("navChoose");
+		
+		mcxui.nav.init("customNav");
+	</script>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>tab选项卡</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<!-- 单独引入css和js -->
+		<!--<link rel="stylesheet" type="text/css" href="css/mcxui.tab.css"/>
+		<script type="text/javascript" src="js/mcxui.base.js"></script>
+		<script type="text/javascript" src="js/mcxui.tab.js"></script>-->
+		<link rel="stylesheet" type="text/css" href="css/mcxui.css"/>
+		<!--<script type="text/javascript" src="js/mcxui.js"></script>-->
+		<!-- 实际开发使用mcxui.min.js替换上面的mcxui.js -->
+		<script type="text/javascript" src="js/mcxui.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+		<style type="text/css">
+			body{
+				font-family: "微软雅黑";
+				font-size: 14px;
+			}
+			.container{
+				height: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--div容器用来固定accordion宽高，也可以采用行内样式定义宽高-->
+		<div class="container">
+			<div id="tab" class="mcxui-tab">
+				<div class="tab-head">
+					<ul>
+						<li class="tab-title selected">我的主页</li>
+						<li class="tab-title">选项卡1</li>
+					</ul>
+				</div>
+				<div class="tab-content">
+					<div class="content">
+						主页内容
+					</div>
+					<div class="content">
+						选项卡1内容
+						<div>
+							11111
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<p>
+			标题：<input type="text" id="title"/><br/><br/>
+			内容：<textarea id="content" rows="5" cols="30"></textarea><br/><br/>
+			<button onclick="addTab()">添加tab</button>
+		</p>
+		<p>
+			内容：<textarea id="tab_content" rows="5" cols="30"></textarea><br/><br/>
+			<button onclick="setCurrentTab()">设置当前tab内容</button>
+		</p>
+	</body>
+	<script type="text/javascript">
+		//传入id，初始化tab
+		var tab = mcxui.tab.init("tab", {
+			removeable: true,  //是否启用删除按钮
+			//tab切换时回调
+			tabChange: function(tabTitle, tabContent, index){
+				console.log(tabTitle);
+				console.log(tabContent);
+				console.log(index);
+			}
+		});
+		function addTab(){
+			var title = document.getElementById("title").value;
+			var content = document.getElementById("content").value;
+			tab.addTab(title, content);
+		}
+		function setCurrentTab(){
+			$.ajax({
+				type: "GET",
+				url: "content.html",
+				success: function(data){
+					tab.setCurrentTab(data);
+				}
+			});
+			//tab.setCurrentTab(document.getElementById("tab_content").value);
+		}
+	</script>
+</html>

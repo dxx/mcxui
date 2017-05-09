@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>switch开关</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<!-- 单独引入css和js -->
+		<!--<link rel="stylesheet" type="text/css" href="css/mcxui.switch.css"/>
+		<script type="text/javascript" src="js/mcxui.base.js"></script>
+		<script type="text/javascript" src="js/mcxui.switch.js"></script>-->
+		<link rel="stylesheet" type="text/css" href="css/mcxui.css"/>
+		<!--<script type="text/javascript" src="js/mcxui.js"></script>-->
+		<!-- 实际开发使用mcxui.min.js替换上面的mcxui.js -->
+		<script type="text/javascript" src="js/mcxui.min.js"></script>
+		<style type="text/css">
+			body{
+				font-family: "微软雅黑";
+			}
+			button{
+				border: none;
+				background-color: #E2E2E2;
+				padding: 6px 12px;
+				border: 1px solid #CCCCCC;
+				border-radius: 3px;
+				outline: none;
+				cursor: pointer;
+			}
+			.block{
+				width: 300px;
+				padding: 10px 20px;
+				border: 1px dashed #E2E2E2;
+			}
+			.option{
+				font-size: 13px;
+				margin-bottom: 13px;
+			}
+			.status{
+				font-size: 14px;
+				margin-top: 10px;
+			}
+			
+			/*更改switch开和关状态下的背景色
+			 .switch.switch-on   打开状态下的样式
+			 .switch.switch-off  关闭状态下的样式
+			 */
+			#cusBg.mcxui-switch.switch-on{
+				background-color: #1E90FF;
+			}
+			#cusBg.mcxui-switch.switch-off{
+				background-color: #CCCCCC;
+			}
+		</style>
+	</head>
+	<body>
+		<h5>基本展示</h5>
+		<div class="block">
+			<!-- 
+				switch的html结构。如果id为switch，默认初始化
+				如需默认关闭按钮，将switch-on改为switch-off
+			-->
+			<div class="mcxui-switch switch-on" id="mySwitch">
+				<div class="switch-text-on">NO</div>
+				<div class="switch-button"></div>
+				<div class="switch-text-off">OFF</div>
+			</div>
+		</div>
+		
+		<h5>属性</h5>
+		<div class="block">
+			<div class="mcxui-switch switch-off" id="switch1">
+				<div class="switch-text-on">NO</div>
+				<div class="switch-button"></div>
+				<div class="switch-text-off">OFF</div>
+			</div>
+			<div class="status">初始状态：<span id="switch1_status"></span></div>
+		</div>
+		
+		<h5>方法</h5>	
+		<div class="block">
+			<div class="option">
+				<button id="on">开启</button>
+				<button id="off">关闭</button>
+				<button id="on-off">打开或关闭</button>
+			</div>
+			<div class="mcxui-switch switch-on" id="switch2">
+				<div class="switch-text-on">开</div>
+				<div class="switch-button"></div>
+				<div class="switch-text-off">关</div>
+			</div>
+			<div class="status">开关状态：<span id="switch2_status"></span></div>
+		</div>
+		
+		<h5>更改背景色</h5>	
+		<div class="block">
+			<div class="mcxui-switch switch-on" id="cusBg">
+				<div class="switch-text-on">开</div>
+				<div class="switch-button"></div>
+				<div class="switch-text-off">关</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+	
+		//传入id初始化switch
+		mcxui.switch.init("mySwitch");
+		
+		var sw1 = mcxui.switch.init("switch1");
+		var isOpen = sw1.isOpen;  //获取开关状态
+		
+		setSwitch1Status(isOpen);
+		
+		var sw2 = mcxui.switch.init("switch2");
+		setSwitch2Status(sw2.isOpen);
+		
+		//开关状态切换时触发
+		sw2.toggle(function(status){
+			setSwitch2Status(status);  //设置开关状态
+		});
+		
+		document.getElementById("on").onclick = function(){
+			sw2.on();  //打开switch开关
+		}
+		document.getElementById("off").onclick = function(){
+			sw2.off();  //关闭switch开关
+		}
+		document.getElementById("on-off").onclick = function(){
+			sw2.toggle();  //switch状态在开和关之间切换
+		}
+		
+		var cusSwitch = mcxui.switch.init("cusBg");
+		
+		function setSwitch1Status(status){
+			if(status)  //判断开关状态。true of false
+				document.getElementById("switch1_status").innerHTML = "开";
+			else
+				document.getElementById("switch1_status").innerHTML = "关";
+		}
+		
+		function setSwitch2Status(status){
+			if(status)  //判断开关状态。true of false
+				document.getElementById("switch2_status").innerHTML = "开";
+			else
+				document.getElementById("switch2_status").innerHTML = "关";
+		}
+	</script>
+</html>

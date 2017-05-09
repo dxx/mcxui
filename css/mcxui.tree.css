@@ -1,0 +1,89 @@
+ul.mcxui-tree{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	color: #333333;
+}
+ul.mcxui-tree .tree-item a.tree-node{
+	display: inline-block;
+	height: 23px;
+	line-height: 23px;
+	color: #000000;
+	text-decoration: none;
+	cursor: pointer;
+	outline: none;
+}
+ul.mcxui-tree .tree-item a.tree-node:hover{
+	opacity: 0.7;
+	filter: alpha(opacity = 70);
+}
+ul.mcxui-tree .tree-item  .tree-icon,
+ul.mcxui-tree .tree-item  .tree-checkbox{
+	font-family: 'icomoon' !important;
+ 	font-style: normal;
+  	font-weight: normal;
+  	font-variant: normal;
+  	text-transform: none;
+  	font-size: 16px;
+  	line-height: 1;
+  	speak: none;
+  	display: inline-block;
+  	width: 16px;
+  	height: 16px;
+}
+ul.mcxui-tree .tree-item > .tree-icon{
+	margin-right: 2px;
+}
+ul.mcxui-tree .tree-item.data-item > .tree-icon{
+	margin-right: 7px;
+}
+ul.mcxui-tree .tree-item.data-item > .tree-checkbox{
+	margin-right: 3px;
+}
+ul.mcxui-tree .tree-item .tree-icon.expandable,
+ul.mcxui-tree .tree-item .tree-icon.collapsable,
+ul.mcxui-tree .tree-item .tree-checkbox
+{
+	font-size: 14px;
+	cursor: pointer;
+}
+ul.mcxui-tree .tree-item .tree-icon.expandable:before{
+	content: "\ea0a";
+}
+ul.mcxui-tree .tree-item .tree-icon.collapsable:before{
+	content: "\ea0b";
+}
+ul.mcxui-tree .tree-item .tree-icon.text:before{
+	content: "\e926";
+}
+ul.mcxui-tree .tree-item .tree-icon.folder:before{
+	content: "\e92f";
+}
+ul.mcxui-tree .tree-item .tree-icon.folder-open:before{
+	content: "\e930";
+}
+ul.mcxui-tree .tree-item  .tree-checkbox.checked:before{
+  	content: "\ea52";
+}
+ul.mcxui-tree .tree-item  .tree-checkbox.unchecked:before {
+  	content: "\ea53";
+}
+
+ul.mcxui-tree .tree-item span{
+	font-size: 14px;
+}
+ul.mcxui-tree .tree-item span.tree-name{
+	margin-left: 4px;
+}
+ul.mcxui-tree .tree-item ul.tree-child{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	margin-left: 22px;
+}
+ul.mcxui-tree .tree-item .tree-child.show{
+	display: block;
+}
+ul.mcxui-tree .tree-item .tree-child.hidden{
+	display: none;
+}

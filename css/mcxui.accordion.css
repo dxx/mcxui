@@ -1,0 +1,56 @@
+.mcxui-accordion{
+	font-size: 13px;
+	color: #333333;
+	border: 1px solid #E2E2E2;
+	background-color: #FFFFFF;
+	height: 100%;
+}
+.mcxui-accordion > .accordion-item{
+	position: relative;
+	overflow: hidden;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+.mcxui-accordion > .accordion-item.collapsable{
+	border-bottom: 1px solid #E2E2E2;
+}
+.mcxui-accordion > .accordion-item > h5{
+	font-size: 13px;
+	color: #000000;
+	margin: 0;
+	padding: 6px 10px;
+	background: #EEEEEE;
+	border-bottom: 1px solid #E2E2E2;
+}
+.mcxui-accordion > .accordion-item > h5:hover{
+	cursor: pointer;
+	background: #DEDEDE;
+}
+.mcxui-accordion > .accordion-item > i{
+	position: absolute;
+	right: 10px;
+	top: 6px;
+	width: 18px;
+	height: 18px;
+	font-family: 'icomoon' !important;
+	speak: none;
+ 	font-style: normal;
+  	font-weight: normal;
+  	font-variant: normal;
+  	text-transform: none;
+  	line-height: 1;
+  	font-size: 16px;
+  	cursor: pointer;
+}
+.mcxui-accordion > .accordion-item > i:before{
+	content: "\e9bf";
+}
+.mcxui-accordion > .accordion-item > .accordion-content{
+	display: none;
+	overflow: auto;
+}
+.mcxui-accordion > .accordion-item > i.collapse:before{
+	content: "\e9c0";
+}
+

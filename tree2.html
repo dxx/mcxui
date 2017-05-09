@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>tree树</title>
+		<!-- 单独引入css和js -->
+		<!--<link rel="stylesheet" type="text/css" href="css/mcxui.icon.css"/>
+		<link rel="stylesheet" type="text/css" href="css/mcxui.tree.css"/>
+		<script type="text/javascript" src="js/mcxui.base.js"></script>
+		<script type="text/javascript" src="js/mcxui.tree.js"></script>-->
+		<link rel="stylesheet" type="text/css" href="css/mcxui.css"/>
+		<!--<script type="text/javascript" src="js/mcxui.js"></script>-->
+		<!-- 实际开发使用mcxui.min.js替换上面的mcxui.js -->
+		<script type="text/javascript" src="js/mcxui.min.js"></script>
+		<style type="text/css">
+			body{
+				font-family: "微软雅黑";
+			}
+			.piece{
+				width: 33%;
+				float: left;
+			}
+			.piece h5{
+				font-size: 16px;
+			}
+			.container{
+				width: 200px;
+				height: 300px;
+				padding: 10px 10px;
+				border: 1px solid #E2E2E2;
+				overflow: auto;
+			}
+			#checkedNode, #uncheckedNode{
+				font-size: 13px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="piece">
+			<h5>带复选框的tree</h5>
+			<div class="container" id="checkableTree"></div>
+		</div>
+		<div class="piece">
+			<h5>已选中节点</h5>
+			<div class="container" id="checkedNode"></div>
+		</div>
+		<div class="piece">
+			<h5>未选中节点</h5>
+			<div class="container" id="uncheckedNode"></div>
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+		
+		function showCheckNodes(nodes){
+			var div = document.getElementById("checkedNode");
+			div.innerHTML = "";
+			for(var i = 0; i < nodes.length; i++){
+				var n = nodes[i];
+				var d = document.createElement("div");
+				d.innerHTML = "id: " + n.id + ",name: " + n.name;
+				div.appendChild(d)
+			}
+		}
+		function showUncheckNodes(nodes){
+			var div = document.getElementById("uncheckedNode");
+			div.innerHTML = "";
+			for(var i = 0; i < nodes.length; i++){
+				var n = nodes[i];
+				var d = document.createElement("div");
+				d.innerHTML = "id: " + n.id + ",name: " + n.name;
+				div.appendChild(d)
+			}
+		}
+		
+		
+		//如需默认勾选，添加checked=true，改属性只有在启用复选框的时候才有效
+		var treeData = [
+				{id:1, name:"收件箱", parentId:0, expand:true},
+				{id:1001, name:"QQ邮箱", checked:true, parentId:1},
+				{id:1002, name:"189邮箱", parentId:1},
+				{id:1003, name:"新浪邮箱", parentId:1},
+				{id:100101, name:"已发送", parentId:1001},
+				{id:100102, name:"已删除", parentId:1001},
+				{id:100103, name:"垃圾箱", parentId:1001},
+				{id:2, name:"文件夹", parentId:0},
+				{id:100201, name:"子文件夹1", parentId:2},
+				{id:100202, name:"子文件夹2", parentId:2},
+				{id:100203, name:"子文件夹3", parentId:2}
+		];
+		
+		var tree = mcxui.tree.init("checkableTree", {
+			enableLink: false,  //禁用链接跳转
+			enableCheck: true,  //启用复选框。默认为false。必须使用data初始化才能生效
+			//checkbox点击时回调
+			checkboxClick: function(treeId, treeName, checked){
+				alert("被点击的节点：id:" + treeId + " name:" + treeName + " checked:" + checked);
+				
+				var checkedNodes = tree.getCheckedNodes();  //获取所有选中的节点
+				showCheckNodes(checkedNodes);
+				
+				var uncheckedNodes = tree.getUncheckedNodes();  //获取所有选中的节点
+				showUncheckNodes(uncheckedNodes);
+			}
+		}, treeData);
+		
+		var checkedNodes = tree.getCheckedNodes();  //获取所有选中的节点
+		showCheckNodes(checkedNodes);
+		
+		var uncheckedNodes = tree.getUncheckedNodes();  //获取所有选中的节点
+		showUncheckNodes(uncheckedNodes);
+		
+	</script>
+</html>
