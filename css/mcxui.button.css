@@ -47,13 +47,13 @@
 	filter: alpha(opacity = 100);
 }
 .mcxui-btn.btn-small{
-	font-size: 12px;
+	font-size: 12px !important;
 }
 .mcxui-btn.btn-middle{
-	font-size: 14px;
+	font-size: 14px !important;
 }
 .mcxui-btn.btn-large{
-	font-size: 16px;
+	font-size: 16px !important;
 }
 div.mcxui-btn-group{
 	display: inline-block;
