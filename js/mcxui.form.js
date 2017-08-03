@@ -357,6 +357,9 @@
 	};
 	var mcxui = {
 		form: {
+			init: function(){
+				form.init();
+			},
 			select: function(elem){
 				var selectElement = typeof elem == "object" ? elem : document.getElementById(elem);
 				//if it has create select tag, remove it
