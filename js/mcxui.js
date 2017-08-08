@@ -1020,7 +1020,7 @@
 			pageSize: 10,
 			totalCount: 10,
 			pages: 5,
-			form: "",
+			form: ""
 		}
 		var ajax = {
 			url: "",
