@@ -70,7 +70,7 @@
 }
 .mcxui-tab > .tab-head .tab-menu{
 	font-size: 13px;
-	position: fixed;
+	position: absolute;
 	padding: 3px 0;
 	background-color: #FFFFFF;
 	border: 1px solid #E2E2E2;

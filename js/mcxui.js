@@ -150,6 +150,7 @@
 	 * tab
 	 */
 	function Tab(id, options){
+		this.id = id;
 		this.currentIndex = 0;
 		this.options = {
 			removeable: false,
@@ -159,10 +160,10 @@
 		
 		var context = document.getElementById(id);
 		
-		var tabHead = context.querySelector(".tab-head");
+		var tabHead = context.querySelector("#" + id + " > .tab-head");
 		this.titleContainer = tabHead.getElementsByTagName("ul")[0];
 		
-		this.contentContainer = context.querySelector(".tab-content");
+		this.contentContainer = context.querySelector("#" + id + " > .tab-content");
 		
 		this.tabTitles = [];
 		
@@ -170,7 +171,7 @@
 		this.tabTitles.push.apply(this.tabTitles, tabTitles);
 		
 		this.tabContents = []
-		var tabContents = context.querySelectorAll(".content");
+		var tabContents = context.querySelectorAll("#" + id + " > .tab-content > .content");
 		this.tabContents.push.apply(this.tabContents, tabContents);
 		
 		this.contentHeight = context.offsetHeight - tabHead.offsetHeight - 2;
@@ -179,7 +180,7 @@
 		
 		var _this = this;
 		for(var i = 0; i < this.tabTitles.length; i++){
-			this.tabTitles[i].id = "title-" + (i + 1);
+			this.tabTitles[i].id = this.id + "_title-" + (i + 1);
 			on(this.tabTitles[i], "click", function(e){
 				_this._changeTab(e.target || e.srcElement);
 			});
@@ -199,70 +200,71 @@
 			}
 		}
 		
-		on(tabHead, "contextmenu", function(e){
-			if(e.preventDefault){
-				e.preventDefault();
-			}else{
-				window.event.returnValue = false;
-			}
-			if(!tabHead.querySelector(".tab-menu")){
-				var x = e.pageX || e.clientX;
-				var y = e.pageY || e.clientY;
-				var tabMenuBg = document.createElement("div");
-				var tabMenu = document.createElement("div");
-				var tabMenu1= document.createElement("div");
-				var tabMenu2 = document.createElement("div");
-				var tabMenu3 = document.createElement("div");
-				var tabMenu4 = document.createElement("div");
-				tabMenu.style.left = x + "px";
-				tabMenu.style.top = y + "px";
-				tabMenu1.innerHTML = "关闭当前";
-				tabMenu2.innerHTML = "关闭其它";
-				tabMenu3.innerHTML = "关闭所有";
-				tabMenu4.innerHTML = "取消";
-				addClass(tabMenuBg, "tab-menu-bg");
-				addClass(tabMenu, "tab-menu");
-				addClass(tabMenu1, "tab-menu-opt");
-				addClass(tabMenu2, "tab-menu-opt");
-				addClass(tabMenu3, "tab-menu-opt");
-				addClass(tabMenu4, "tab-menu-opt");
-				
-				on(tabMenu1, "click", function(){
-					_this._closeTab("current");
+		if(this.options.removeable){
+			on(tabHead, "contextmenu", function(e){
+				if(e.preventDefault){
+					e.preventDefault();
+				}else{
+					window.event.returnValue = false;
+				}
+				if(!tabHead.querySelector(".tab-menu")){
+					var x = e.pageX || e.clientX;
+					var y = e.pageY || e.clientY;
+					var tabMenuBg = document.createElement("div");
+					var tabMenu = document.createElement("div");
+					var tabMenu1= document.createElement("div");
+					var tabMenu2 = document.createElement("div");
+					var tabMenu3 = document.createElement("div");
+					var tabMenu4 = document.createElement("div");
+					tabMenu.style.left = x + "px";
+					tabMenu.style.top = y + "px";
+					tabMenu1.innerHTML = "关闭当前";
+					tabMenu2.innerHTML = "关闭其它";
+					tabMenu3.innerHTML = "关闭所有";
+					tabMenu4.innerHTML = "取消";
+					addClass(tabMenuBg, "tab-menu-bg");
+					addClass(tabMenu, "tab-menu");
+					addClass(tabMenu1, "tab-menu-opt");
+					addClass(tabMenu2, "tab-menu-opt");
+					addClass(tabMenu3, "tab-menu-opt");
+					addClass(tabMenu4, "tab-menu-opt");
 					
-					tabHead.removeChild(tabMenuBg);
-					tabHead.removeChild(tabMenu);
-				});
-				on(tabMenu2, "click", function(){
-					_this._closeTab("other");
+					on(tabMenu1, "click", function(){
+						_this._closeTab("current");
+						
+						tabHead.removeChild(tabMenuBg);
+						tabHead.removeChild(tabMenu);
+					});
+					on(tabMenu2, "click", function(){
+						_this._closeTab("other");
+						
+						tabHead.removeChild(tabMenuBg);
+						tabHead.removeChild(tabMenu);
+					});
+					on(tabMenu3, "click", function(){
+						_this._closeTab("all");
+						
+						tabHead.removeChild(tabMenuBg);
+						tabHead.removeChild(tabMenu);
+					});
+					on(tabMenu4, "click", function(){
+						tabHead.removeChild(tabMenuBg);
+						tabHead.removeChild(tabMenu);
+					});
+					on(tabMenuBg, "click", function(){
+						tabHead.removeChild(tabMenuBg);
+						tabHead.removeChild(tabMenu);
+					});
 					
-					tabHead.removeChild(tabMenuBg);
-					tabHead.removeChild(tabMenu);
-				});
-				on(tabMenu3, "click", function(){
-					_this._closeTab("all");
-					
-					tabHead.removeChild(tabMenuBg);
-					tabHead.removeChild(tabMenu);
-				});
-				on(tabMenu4, "click", function(){
-					tabHead.removeChild(tabMenuBg);
-					tabHead.removeChild(tabMenu);
-				});
-				on(tabMenuBg, "click", function(){
-					tabHead.removeChild(tabMenuBg);
-					tabHead.removeChild(tabMenu);
-				});
-				
-				tabMenu.appendChild(tabMenu1);
-				tabMenu.appendChild(tabMenu2);
-				tabMenu.appendChild(tabMenu3);
-				tabMenu.appendChild(tabMenu4);
-				tabHead.appendChild(tabMenuBg);
-				tabHead.appendChild(tabMenu);
-			}
-		});
-		
+					tabMenu.appendChild(tabMenu1);
+					tabMenu.appendChild(tabMenu2);
+					tabMenu.appendChild(tabMenu3);
+					tabMenu.appendChild(tabMenu4);
+					tabHead.appendChild(tabMenuBg);
+					tabHead.appendChild(tabMenu);
+				}
+			});
+		}
 	};
 	Tab.prototype = {
 		constructor: Tab,
@@ -300,7 +302,7 @@
 			_tab.tabContents.splice(index, 1);
 			
 			for(var i = 0; i < _tab.tabTitles.length; i++){
-				_tab.tabTitles[i].id = "title-" + (i + 1);
+				_tab.tabTitles[i].id = _tab.id + "_title-" + (i + 1);
 			}
 			
 			if(_tab.tabTitles.length != 0)
@@ -333,8 +335,9 @@
 				this.tabContents = contents;
 				
 				for(var i = 0; i < this.tabTitles.length; i++){
-					this.tabTitles[i].id = "title-" + (i + 1);
+					this.tabTitles[i].id = this.id + "_title-" + (i + 1);
 				}
+				this.currentIndex = 1;
 				
 			}else if(opt = "all"){
 				var titles = [], contents = [];
@@ -353,11 +356,12 @@
 				this.tabContents = contents;
 				
 				for(var i = 0; i < this.tabTitles.length; i++){
-					this.tabTitles[i].id = "title-" + (i + 1);
+					this.tabTitles[i].id = this.id + "_title-" + (i + 1);
 				}
 				//selected this first tab
 				this.tabContents[0].style.display = "block";
 				addClass(this.tabTitles[0], "selected");
+				this.currentIndex = 0;
 			}
 		},
 		addTab: function(title, content){
@@ -365,13 +369,15 @@
 				var tabTitle = this.tabTitles[i];
 				var _title= tabTitle.innerHTML.replace("<i></i>", "");
 				if(_title == title){
+					this.tabContents[i].innerHTML = content;
 					this._changeTab(tabTitle);
+					handleScript(content);
 					return;
 				}
 			}
 			var titleElem = document.createElement("li");
 			titleElem.innerHTML = title;
-			titleElem.id = "title-" + (this.tabTitles.length + 1);
+			titleElem.id = this.id + "_title-" + (this.tabTitles.length + 1);
 			var _this = this;
 			on(titleElem, "click", function(e){
 				_this._changeTab(e.target || e.srcElement);

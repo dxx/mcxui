@@ -24,9 +24,31 @@
 		</style>
 	</head>
 	<body>
+		<h4>默认选项卡</h4>
+		<div id="tab1" class="mcxui-tab">
+			<div class="tab-head">
+				<ul>
+					<li class="tab-title selected">选项卡1</li>
+					<li class="tab-title">选项卡2</li>
+				</ul>
+			</div>
+			<div class="tab-content">
+				<div class="content">
+					选项卡1内容
+				</div>
+				<div class="content">
+					选项卡2内容
+					<div>
+						11111
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<h4>动态操作的选项卡</h4>
 		<!--div容器用来固定accordion宽高，也可以采用行内样式定义宽高-->
 		<div class="container">
-			<div id="tab" class="mcxui-tab">
+			<div id="tab2" class="mcxui-tab">
 				<div class="tab-head">
 					<ul>
 						<li class="tab-title selected">我的主页</li>
@@ -57,8 +79,10 @@
 		</p>
 	</body>
 	<script type="text/javascript">
+		var tab1 = mcxui.tab.init("tab1");
+	
 		//传入id，初始化tab
-		var tab = mcxui.tab.init("tab", {
+		var tab = mcxui.tab.init("tab2", {
 			removeable: true,  //是否启用删除按钮
 			//tab切换时回调
 			tabChange: function(tabTitle, tabContent, index){
