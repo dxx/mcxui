@@ -170,7 +170,10 @@ button, input, select, textarea{
 	padding-right: 5px;
 }
 .mcxui-form-horizontal .mcxui-input,
-.mcxui-form-horizontal .mcxui-textarea{
+.mcxui-form-horizontal .mcxui-textarea,
+.mcxui-form-horizontal .mcxui-radios,
+.mcxui-form-horizontal .mcxui-checkboxs,
+.mcxui-form-horizontal .mcxui-select-wrap{
 	display: inline-block;
 	width: auto;
 }

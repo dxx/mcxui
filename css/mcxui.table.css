@@ -10,12 +10,19 @@ table.mcxui-table tbody td{
 	padding: 8px 14px;
 }
 table.mcxui-table thead th{
-	text-align: left !important;
 	background-color: #F2F2F2;
 }
 table.mcxui-table tbody tr:hover{
 	background-color: #FBFBFB;
 	cursor: default;
+}
+table.mcxui-table.table-center thead th,
+table.mcxui-table.table-center tbody td{
+	text-align: center !important;
+}
+table.mcxui-table.table-left thead th,
+table.mcxui-table.table-left tbody td{
+	text-align: left !important;
 }
 table.mcxui-table.table-row,
 table.mcxui-table.table-column{
