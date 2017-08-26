@@ -9,6 +9,8 @@
 			var selects = document.querySelectorAll(".mcxui-select");
 			for(var i = 0; i < selects.length; i++){
 				var select = selects[i];
+				if(select.previousSibling && 
+					hasClass(select.previousSibling, "mcxui-select-wrap")) continue;
 				this.createSelect(select);
 			}
 		},
@@ -17,6 +19,8 @@
 			var checkboxs = document.querySelectorAll(".mcxui-checkbox");
 			for(var i = 0; i < checkboxs.length; i++){
 				var ckbox = checkboxs[i];
+				if(ckbox.previousSibling && 
+					hasClass(ckbox.previousSibling, "mcxui-checkbox-wrap")) continue;
 				
 				var ckboxWrapElem = document.createElement("div");
 				var ckboxElem = document.createElement("i");
@@ -113,6 +117,8 @@
 			var radionButtons = document.querySelectorAll(".mcxui-radio");
 			for(var i = 0; i < radionButtons.length; i++){
 				var radionButton = radionButtons[i];
+				if(radionButton.previousSibling 
+					&& hasClass(radionButton.previousSibling, "mcxui-radio-wrap")) continue;
 				
 				var radioWrapElem = document.createElement("div");
 				var radioElem = document.createElement("i");
