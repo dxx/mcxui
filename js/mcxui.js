@@ -20,16 +20,16 @@
 		var re = new RegExp("(^|\\s)" + c + "(\\s|$)", 'g');
 		e.className = e.className.replace(re, " ");
 	};
-	var isSupportAddEventListner = !!document.addEventListener;
+	var isSupportAddEventListener = !!document.addEventListener;
 	function on(dom, eventType, callback){
-		if(isSupportAddEventListner){
+		if(isSupportAddEventListener){
 			dom.addEventListener(eventType, callback);
 		}else{
 			dom.attachEvent("on" + eventType, callback);
 		}
 	};
 	function off(dom, eventType, fun){
-		if(isSupportAddEventListner){
+		if(isSupportAddEventListener){
 			dom.removeEventListener(eventType, fun);
 		}else{
 			dom.detachEvent("on" + eventType, fun);	
