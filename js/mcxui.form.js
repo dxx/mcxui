@@ -91,7 +91,8 @@
 								cancelAll(groupCks);
 							}
 						}
-						
+						checkboxDom.checked = !checkboxDom.checked;
+                        checkboxDom.click();
 					});
 					
 					var group = ckbox.getAttribute("mcxui-group");
@@ -167,6 +168,7 @@
 								radioButtonDom.checked = true;
 							}
 						}
+						radioButtonDom.click();
 					});
 				}
 				radionButton.parentNode.insertBefore(radioWrapElem, radionButton);

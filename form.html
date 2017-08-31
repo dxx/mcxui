@@ -306,6 +306,11 @@
 				<input type="radio" name="ra" value="1" class="mcxui-radio" title="女"/>
 				<input type="radio" name="unallowable-radio" class="mcxui-radio" title="禁用的单选按钮" disabled="disabled"/>
 			</div>
+			<h5>带点击事件的单选按钮</h5>
+			<div>
+				<input type="radio" name="ra2" value="0" class="mcxui-radio" checked="checked" title="男"/>
+				<input type="radio" name="ra2" value="1" class="mcxui-radio" title="女"/>
+			</div>
 			<br/>
 			<div>如需默认选中，添加checked属性。禁用单选按钮添加disabled属性</div>
 			
@@ -316,6 +321,13 @@
 				<input type="checkbox" name="ck" value="apple" class="mcxui-checkbox" title="苹果"/>
 				<input type="checkbox" name="ck" value="pear" class="mcxui-checkbox" title="梨子"/>
 				<input type="checkbox" name="unallowable-checkbox" class="mcxui-checkbox" title="禁用的复选框" disabled="disabled"/>
+			</div>
+			<h5>带点击事件的复选框</h5>
+			<div>
+				<input type="checkbox" name="ck2" value="mango" class="mcxui-checkbox" checked="checked" title="芒果"/>
+				<input type="checkbox" name="ck2" value="watermelon" class="mcxui-checkbox" title="西瓜"/>
+				<input type="checkbox" name="ck2" value="apple" class="mcxui-checkbox" title="苹果"/>
+				<input type="checkbox" name="ck2" value="pear" class="mcxui-checkbox" title="梨子"/>
 			</div>
 			<br/>
 			<div>如需默认选中，添加checked属性。禁用复选框添加disabled属性</div>
@@ -378,6 +390,21 @@
 		document.getElementById("cs").onchange = function(e){
 			alert("你当前所选的城市：" + this.value);
 		};
+		
+		var radiobuttons = document.getElementsByName("ra2");
+        for(var i = 0; i < radiobuttons.length; i++){
+            radiobuttons[i].onclick = function(){
+                alert("状态：" + this.checked + ", 值：" + this.value);
+            }
+        }
+
+		var checkboxs = document.getElementsByName("ck2");
+		for(var i = 0; i < checkboxs.length; i++){
+		    checkboxs[i].onclick = function(){
+		        alert("状态：" +this.checked + ", 值：" + this.value);
+			}
+		}
+		
 		/*setTimeout(function(){
 			mcxui.form.select("cs");
 		}, 3000);*/
