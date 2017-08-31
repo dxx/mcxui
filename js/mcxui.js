@@ -2135,7 +2135,7 @@
 							}
 						}
 						checkboxDom.checked = !checkboxDom.checked;
-                        checkboxDom.click();
+						checkboxDom.click();
 					});
 					
 					var group = ckbox.getAttribute("mcxui-group");
