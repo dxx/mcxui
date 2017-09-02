@@ -18,7 +18,6 @@
 	top: 200px;
 	left: 200px;
 	width: 260px;
-	min-height: 146px;
 	color: #333333;
 	box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.3);
 	border-radius: 2px;
@@ -52,8 +51,6 @@
 }
 .mcxui-dialog .dialog-content{
 	font-size: 13px;
-	height: 19px;
-	min-height: 19px;
 	padding: 18px;
 	color: #000000;
 	overflow: hidden;

@@ -46,6 +46,7 @@
 			<button id="button-layer">默认行为的layer</button>
 			<button id="button-layer-other">不同风格的layer</button>
 			<button id="button-layer-content">指定内容的layer</button>
+			<button id="button-layer-close">手动关闭的layer</button>
 		</p>
 		<h5>消息框</h5>
 		<p>
@@ -80,7 +81,7 @@
 		
 		//可设置的参数
 		//width: 260,  //默认宽
-		//height: 146,  //默认高
+		//height: 144,  //默认高
 		//title："信息",  //标题。默认为"信息"
 		//showClose: true,  //是否显示关闭按钮。默认true
 		//shadeClose: true,  //点击阴影是否可关闭。默认false
@@ -102,7 +103,7 @@
 		document.getElementById("button-alert-close").onclick = function(){
 			mcxui.dialog.alert("hi, 我是alert", {
 				title: "点击阴影部分关闭我",
-				shadeClose: true,  //点击阴影可关闭
+				shadeClose: true  //点击阴影可关闭
 			});
 		};
 		document.getElementById("button-alert-style").onclick = function(){
@@ -112,20 +113,20 @@
 				//设置标题样式，css属性名采用驼峰命名规则
 				titleStyle: {
 					color: "#FFFFFF",
-					backgroundColor: "#4F4F4F",
+					backgroundColor: "#4F4F4F"
 				},
 				//设置按钮样式，css属性名采用驼峰命名规则
 				buttonStyle: {
 					color: "#000000",
 					border: "1px solid #DEDEDE",
-					backgroundColor: "#EEEEEE",
+					backgroundColor: "#EEEEEE"
 				}
 			});
 		};
 		document.getElementById("button-alert-animation").onclick = function(){
 			mcxui.dialog.alert("hi, 我是alert", {
 				shadeClose: true,  //点击阴影可关闭
-				animationType: "zoom",  //zoom动画
+				animationType: "zoom"  //zoom动画
 			});
 		};
 		
@@ -133,7 +134,7 @@
 		
 		//可设置的参数
 		//width: 260,  //默认宽
-		//height: 146,  //默认高
+		//height: 144,  //默认高
 		//title："信息",  //标题。默认为"信息"
 		//btn: ["确定", "取消"],  //按钮。默认["确定"，"取消"]
 		//showClose: true,  //是否显示关闭按钮。默认true
@@ -197,7 +198,7 @@
 				title: "我是你定义的动画哦",
 				showClose: true,  //显示关闭按钮
 				shadeClose: true,  //点击阴影可关闭
-				animationType: "zoom",  //使用zoom动画
+				animationType: "zoom"  //使用zoom动画
 			});
 		};
 		document.getElementById("button-confirm-size").onclick = function(){
@@ -255,7 +256,20 @@
 				}
 			});
 		};
-		
+		document.getElementById("button-layer-close").onclick = function(){
+            mcxui.dialog.layer({
+                title: "可手动关闭的层",
+                //html内容
+                content: "hi, 我是layer层&nbsp;&nbsp;&nbsp;<button id=\"btn\">点我关闭</button>",
+                //layer层添加到document后回调
+                afterLoad: function(){
+                    document.getElementById("btn").onclick=function(){
+                        mcxui.dialog.closeLayer()
+                    };
+                }
+            });
+        };
+        
 		//msg
 		
 		//可设置参数

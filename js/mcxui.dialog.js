@@ -52,8 +52,12 @@
 					addClass(dom, "animation-" + options.animationType + "-out");
 					on(dom, "animationend", remove);
 					layer.close([bgDiv]);
+					
+					if(options.layer) dialog.layerElement = [];
 				}else{
 					layer.close([bgDiv, dom]);
+					
+					if(options.layer) dialog.layerElement = [];
 				}
 			}
 			
@@ -98,6 +102,8 @@
 			dom.style.left = (document.documentElement.clientWidth - dom.offsetWidth) / 2 + "px";
 			
 			if(options.layer){
+				dialog.layerElement.push(bgDiv);
+                dialog.layerElement.push(dom);
 				options.afterLoad();
 			}
 		},
@@ -162,6 +168,7 @@
 	};
 	var dialog = {
 		loadElement: [],
+		layerElement: [],
 		alert: function(content, options){
 			var opts = {
 				showClose: true,
@@ -393,7 +400,11 @@
 		closeLoading: function(){
 			layer.close(this.loadElement);
 			this.loadElement = [];
-		}
+		},
+		closeLayer: function(){
+            layer.close(this.layerElement);
+            this.layerElement = [];
+        }
 	};
 	
 	var mcxui = {
