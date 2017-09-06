@@ -92,7 +92,7 @@
 							}
 						}
 						checkboxDom.checked = !checkboxDom.checked;
-						checkboxDom.click();
+                        checkboxDom.click();
 					});
 					
 					var group = ckbox.getAttribute("mcxui-group");
@@ -237,9 +237,8 @@
 				
 				on(optionElem, "click", function(e){
 					var target = e.target || e.srcElement;
-					var selectName = target.parentNode.getAttribute("name");
 					var selectedValue = target.getAttribute("value");
-					var selectElement = document.querySelector("select[name='" + selectName + "']");
+					var selectElement = target.parentNode.parentNode.nextSibling;
 					var multiple = target.parentNode.getAttribute("multiple");
 					//if select is multiple
 					if(multiple == "true"){
