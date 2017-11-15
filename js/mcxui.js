@@ -1065,7 +1065,6 @@
 				last.innerHTML = "末页";
 				previous.innerHTML = "上一页";
 				next.innerHTML = "下一页";
-				last.innerHTML = "末页";
 				firstLeaveout.innerHTML = lastLeaveout.innerHTML = "...";
 				
 				addClass(first, "first");
@@ -1088,30 +1087,36 @@
 					firstLeaveout.style.display = "none";
 				}
 				
+				var ltLimit = gtLimit = 0;
+				if(this.options.pageNumber % this.options.pages == 0){
+					ltLimit = parseInt(this.options.pageNumber / this.options.pages - 1) * this.options.pages + 1;
+					gtLimit = ltLimit + (this.options.pages - 1);
+				}else{
+					ltLimit = parseInt(this.options.pageNumber / this.options.pages) * this.options.pages + 1;
+					gtLimit = ltLimit + (this.options.pages - 1);
+					if(gtLimit > this.totalPage){
+						gtLimit = this.totalPage;
+					}
+				}
 				var _this = this;
-				for(var i = 1; i <= this.totalPage; i++){
+				var loopPage = this.totalPage < this.options.pages ? this.totalPage : this.options.pages
+				for(var i = 0; i < loopPage; i++){
 					var page = document.createElement("div");
-					page.innerHTML = i;
-					addClass(page, "page");
-					if(opts.pageNumber == i){
-						var current = document.createElement("span");
-						current.innerHTML = i;
-						addClass(current, "current");
-						page.appendChild(current);
-					}
-					
-					var ltLimit = gtLimit = 0;
-					if(opts.pageNumber % opts.pages == 0){
-						ltLimit = opts.pageNumber - (opts.pages - 1);
-						gtLimit = opts.pageNumber;
+					if(ltLimit + i > gtLimit){
+						page.innerHTML = "";
+						page.style.display = "none";
 					}else{
-						ltLimit = parseInt(opts.pageNumber / opts.pages) * opts.pages + 1;
-						gtLimit = ltLimit + (opts.pages - 1);
+						var currentPage = ltLimit + i;
+						page.innerHTML = currentPage;
+						if(opts.pageNumber == currentPage){
+							var current = document.createElement("span");
+							current.innerHTML = currentPage;
+							addClass(current, "current");
+							page.appendChild(current);
+						}
 					}
-					
-					if(i < ltLimit || i > gtLimit)
-					page.style.display = "none";
-					
+					addClass(page, "page");
+
 					operation.appendChild(page);
 					on(page, "click", function(e){
 						_this._page(e.target || e.srcElement);
@@ -1240,7 +1245,6 @@
 			}
 		},
 		_previous: function(){
-			//this.options.pageNumber = this.options.pageNumber - 1;
 			var currentPage = this.options.pageNumber - 1;
 			if(currentPage >= 1){
 				if(this.options.form == ""){
@@ -1330,10 +1334,6 @@
 		},
 		_selectPage: function(op, pageTarget){
 			if(op == "first"){
-				var current = this.pages[this.options.pageNumber - 1].querySelector("span.current");
-				current.innerHTML = 1;
-				this.pages[0].appendChild(current);
-				
 				this.options.pageNumber = 1;
 				
 				if(this.options.showSkipPage == true){
@@ -1353,10 +1353,6 @@
 				
 				this._changePage();
 			}else if(op == "last"){
-				var current = this.pages[this.options.pageNumber - 1].querySelector("span.current");
-				current.innerHTML = this.totalPage;
-				this.pages[this.totalPage - 1].appendChild(current);
-				
 				this.options.pageNumber = this.totalPage;
 				
 				if(this.options.showSkipPage == true){
@@ -1375,10 +1371,14 @@
 				}
 				this._changePage();
 			}else if(op == "previous"){
+				//get the span at the previous page postition and appended to the new position
 				this.options.pageNumber = this.options.pageNumber - 1;
-				var current = this.pages[this.options.pageNumber].querySelector("span.current");
-				current.innerHTML = this.options.pageNumber;
-				this.pages[this.options.pageNumber - 1].appendChild(current);
+				if((this.options.pageNumber) % this.options.pages != 0){
+					var index = (this.options.pageNumber) % this.options.pages;
+					var current = this.pages[index].querySelector("span.current");
+					current.innerHTML = this.options.pageNumber;
+					this.pages[index - 1].appendChild(current);
+				}
 				
 				if(this.options.pageNumber <= 1){
 					//hide the first
@@ -1406,9 +1406,12 @@
 				}
 			}else if(op == "next"){
 				this.options.pageNumber = this.options.pageNumber + 1;
-				var current = this.pages[this.options.pageNumber - 2].querySelector("span.current");
-				current.innerHTML = this.options.pageNumber;
-				this.pages[this.options.pageNumber - 1].appendChild(current);
+				if((this.options.pageNumber - 1) % this.options.pages != 0){
+					var index = (this.options.pageNumber - 1) % this.options.pages;
+					var current = this.pages[index - 1].querySelector("span.current");
+					current.innerHTML = this.options.pageNumber;
+					this.pages[index].appendChild(current);
+				}
 				
 				if(this.options.pageNumber >= this.totalPage){
 					//hide the last
@@ -1435,10 +1438,13 @@
 					this.skipPage.value = this.options.pageNumber;
 				}
 			}else if(op == "page"){
-				var current = this.pages[this.options.pageNumber - 1].querySelector("span.current");
+				var pageNumber = this.options.pageNumber;
 				this.options.pageNumber = parseInt(pageTarget.innerHTML);
+				var index = pageNumber % this.options.pages == 0 ? this.options.pages : pageNumber % this.options.pages;
+				var current = this.pages[index - 1].querySelector("span.current");
 				current.innerHTML = this.options.pageNumber;
-				this.pages[this.options.pageNumber - 1].appendChild(current);
+				var currentIndex = this.options.pageNumber % this.options.pages == 0 ? this.options.pages : this.options.pageNumber % this.options.pages;
+				this.pages[currentIndex - 1].appendChild(current);
 				
 				if(this.options.showSkipPage == true){
 					this.skipPage.value = this.options.pageNumber;
@@ -1455,10 +1461,13 @@
 					this.last.style.display = "inline-block";
 				}
 			}else if(op == "skip"){
-				var current = this.pages[this.options.pageNumber - 1].querySelector("span.current");
+				var pageNumber = this.options.pageNumber;
 				this.options.pageNumber = parseInt(pageTarget.value);
-				current.innerHTML = this.options.pageNumber ;
-				this.pages[this.options.pageNumber - 1].appendChild(current);
+				var index = pageNumber % this.options.pages == 0 ? this.options.pages : pageNumber % this.options.pages;
+				var current = this.pages[index - 1].querySelector("span.current");
+				current.innerHTML = this.options.pageNumber;
+				var currentIndex = this.options.pageNumber % this.options.pages == 0 ? this.options.pages : this.options.pageNumber % this.options.pages;
+				this.pages[currentIndex - 1].appendChild(current);
 				
 				if(this.options.pageNumber == 1){
 					this.first.style.display = "none";
@@ -1488,20 +1497,29 @@
 			}
 		},
 		_changePage: function(){
-			for(var i = 1; i <= this.pages.length; i++){
-				var page = this.pages[i - 1];
-				var ltLimit = gtLimit = 0;
-				if(this.options.pageNumber % this.options.pages == 0){
-					ltLimit = this.options.pageNumber - (this.options.pages - 1);
-					gtLimit = this.options.pageNumber;
-				}else{
-					ltLimit = parseInt(this.options.pageNumber / this.options.pages) * this.options.pages + 1;
-					gtLimit = ltLimit + (this.options.pages - 1);
+			var ltLimit = gtLimit = 0;
+			if(this.options.pageNumber % this.options.pages == 0){
+				ltLimit = parseInt(this.options.pageNumber / this.options.pages - 1) * this.options.pages + 1;
+				gtLimit = ltLimit + (this.options.pages - 1);
+			}else{
+				ltLimit = parseInt(this.options.pageNumber / this.options.pages) * this.options.pages + 1;
+				gtLimit = ltLimit + (this.options.pages - 1);
+				if(gtLimit > this.totalPage){
+					gtLimit = this.totalPage;
 				}
-				if(i < ltLimit || i > gtLimit)
-				page.style.display = "none";
-				else
-				page.style.display = "inline-block";
+			}
+			for(var i = 0; i < this.pages.length; i++){
+				var page = this.pages[i];
+				if(ltLimit + i > gtLimit){
+					page.innerHTML = "";
+					page.style.display = "none";
+				}else{
+					page.innerHTML = ltLimit + i;
+					page.style.display = "inline-block";
+					if(ltLimit + i == this.options.pageNumber){
+						page.innerHTML = page.innerHTML + '<span class="current">' + (ltLimit + i) + '</span>';
+					}
+				}
 			}
 		},
 		_formSubmit: function(){
