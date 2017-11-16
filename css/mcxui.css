@@ -467,6 +467,13 @@ div.switch-button.animation-on{
 	border-left: 1px solid #E2E2E2;
 	cursor: pointer;
 }
+.mcxui-pagination div.first:hover,
+.mcxui-pagination div.last:hover,
+.mcxui-pagination div.previous:hover,
+.mcxui-pagination div.next:hover,
+.mcxui-pagination div.page:hover{
+	background-color: #EEEEEE;
+}
 .mcxui-pagination .pagination-operation div:first-child{
 	border-radius: 2px 0 0 2px;
 	border-left: none;
