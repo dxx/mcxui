@@ -1,6 +1,8 @@
 /**
+ * v0.0.1
  * Copyright (C) 2017
  * A project by mcx
+ * https://github.com/code-mcx/mcxui
  */
 (function(window){
 	/*
