@@ -1,0 +1,101 @@
+.mcxui-switch {
+	position: relative;
+	font-size: 13px;
+	width: 50px;
+	height: 20px;
+	line-height: 20px;
+	border-radius: 20px;
+	color: #FFFFFF;
+	background-color: #2E8B57;
+}
+.mcxui-switch.switch-on {
+	background-color: #2E8B57;
+}
+.mcxui-switch.switch-off {
+	background-color: #D2D2D2;
+}
+.mcxui-switch .switch-text-on {
+	position: absolute;
+	left: 8px;
+	width: 25px;
+	text-align: center;
+}
+.mcxui-switch .switch-text-off {
+	position: absolute;
+	right: 6px;
+	width: 25px;
+	text-align: center;
+}
+.mcxui-switch .switch-button {
+	position: absolute;
+	top: 2px;
+	left: 32px;
+	width: 16px;
+	height: 16px;
+	border-radius: 16px;
+	background-color: #FFFFFF;
+	cursor: pointer;
+}
+.mcxui-switch.switch-on .switch-text-off,
+.mcxui-switch.switch-off .switch-text-on {
+	display: none;
+}
+.mcxui-switch.switch-on .switch-text-on,
+.mcxui-switch.switch-off .switch-text-off {
+	display: block;
+}
+.mcxui-switch.switching .switch-text-on,
+.mcxui-switch.switching .switch-text-off {
+	display: none;
+}
+.mcxui-switch.switch-on .switch-button {
+	left: 32px;
+}
+.mcxui-switch.switch-off .switch-button {
+	left: 2px;
+}
+/*switch animation*/
+div.switch-button.animation-off {
+	-webkit-animation-name: off;
+	-webkit-animation-duration: .2s;
+	animation-name: off;
+	animation-duration: .2s;
+}
+div.switch-button.animation-on {
+	-webkit-animation-name: on;
+	-webkit-animation-duration: .2s;
+	animation-name: on;
+	animation-duration: .2s;
+}
+@-webkit-keyframes off {
+	from {
+		-webkit-transform: translate(0, 0);
+	}
+	to {
+		-webkit-transform: translate(-30px, 0);
+	}
+}
+@-webkit-keyframes on {
+	from {
+		-webkit-transform: translate(0, 0);
+	}
+	to {
+		-webkit-transform: translate(30px, 0);
+	}
+}
+@keyframes off {
+	from {
+		transform: translate(0, 0);
+	}
+	to {
+		transform: translate(-30px, 0);
+	}
+}
+@keyframes on {
+	from {
+		transform: translate(0, 0);
+	}
+	to {
+		transform: translate(30px, 0);
+	}
+}

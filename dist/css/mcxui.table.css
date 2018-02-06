@@ -1,0 +1,44 @@
+table.mcxui-table {
+	font-size: 13px;
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+table.mcxui-table thead th,
+table.mcxui-table tbody td {
+	border:1px solid #E2E2E2;
+	padding: 8px 14px;
+}
+table.mcxui-table thead th {
+	background-color: #F2F2F2;
+}
+table.mcxui-table tbody tr:hover {
+	background-color: #FBFBFB;
+	cursor: default;
+}
+table.mcxui-table.table-center thead th,
+table.mcxui-table.table-center tbody td {
+	text-align: center !important;
+}
+table.mcxui-table.table-left thead th,
+table.mcxui-table.table-left tbody td {
+	text-align: left !important;
+}
+table.mcxui-table.table-row,
+table.mcxui-table.table-column {
+	border:1px solid #E2E2E2;
+}
+table.mcxui-table.table-row thead th,
+table.mcxui-table.table-row tbody td {
+	border: none;
+	border-top:1px solid #E2E2E2;
+	border-bottom:1px solid #E2E2E2;
+	padding: 8px 14px;
+}
+table.mcxui-table.table-column thead th,
+table.mcxui-table.table-column tbody td {
+	border: none;
+	border-left:1px solid #E2E2E2;
+	border-right:1px solid #E2E2E2;
+	padding: 8px 14px;
+}

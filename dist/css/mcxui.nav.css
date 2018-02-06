@@ -1,0 +1,94 @@
+ul.mcxui-nav {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	list-style: none;
+	background-color: #393D49;
+	font-size: 14px;
+	overflow: auto;
+}
+ul.mcxui-nav {
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+ul.mcxui-nav .nav-item.nav-current {
+	background-color: #2B2E37;
+}
+ul.mcxui-nav .nav-item a {
+	position: relative;
+	display: block;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 28px 0 20px;
+	color: #CCCCCC;
+	text-decoration: none;
+	outline: none;
+	cursor: pointer;
+	overflow: hidden;
+	-webkit-transition: all ease-in-out .15s;
+	transition: all ease-in-out .15s;
+}
+ul.mcxui-nav .nav-item a:hover {
+	color: #FFFFFF;
+	background-color: #2B2E37;
+}
+ul.mcxui-nav .nav-item a.nav-active {
+	color: #FFFFFF;
+	background-color: #2E8B57;
+}
+ul.mcxui-nav .nav-item a.choose {
+	color: #FFFFFF;
+	background-color: #2B2E37;
+}
+ul.mcxui-nav .nav-item a.choose:before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: " ";
+	width: 5px;
+	height: 100%;
+	background-color: #2E8B57;
+}
+ul.mcxui-nav .nav-item a.nav-collapsable:after,
+ul.mcxui-nav .nav-item a.nav-expandable:after {
+	font-family: 'mcxui-icon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    font-size: 16px;
+    height: 16px;
+    line-height: 1;
+	position: absolute;
+	top: 12px;
+	right: 12px;
+}
+ul.mcxui-nav .nav-item a.nav-collapsable:after {
+	content: "\e9c0";
+}
+ul.mcxui-nav .nav-item a.nav-expandable:after {
+	content: "\e9bf";
+}
+ul.mcxui-nav ul.nav-child {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+ul.mcxui-nav ul.nav-child.show {
+	display: block;
+}
+ul.mcxui-nav ul.nav-child.hide {
+	display: none;
+}
+ul.mcxui-nav::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+ul.mcxui-nav::-webkit-scrollbar-thumb {
+	background-color: #6E6E6E;
+}
+ul.mcxui-nav::-webkit-scrollbar-corner, ul.mcxui-nav::-webkit-scrollbar-track {
+	background-color: #E2E2E2;
+}

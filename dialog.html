@@ -5,15 +5,16 @@
 		<title>dialog弹框</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 		<!-- 单独引入css和js -->
-		<!--<link rel="stylesheet" type="text/css" href="css/mcxui.dialog.css"/>
-		<script type="text/javascript" src="js/mcxui.base.js"></script>
-		<script type="text/javascript" src="js/mcxui.dialog.js"></script>-->
-		<link rel="stylesheet" type="text/css" href="css/mcxui.css"/>
-		<!--<script type="text/javascript" src="js/mcxui.js"></script>-->
+		<!-- <link rel="stylesheet" type="text/css" href="dist/css/mcxui.dialog.css"/>
+		<script type="text/javascript" src="dist/js/mcxui.base.js"></script>
+		<script type="text/javascript" src="dist/js/mcxui.dialog.js"></script> -->
+		
+		<link rel="stylesheet" type="text/css" href="dist/css/mcxui.css"/>
+		<!--<script type="text/javascript" src="dist/js/mcxui.js"></script>-->
 		<!-- 实际开发使用mcxui.min.js替换上面的mcxui.js -->
-		<script type="text/javascript" src="js/mcxui.min.js"></script>
+		<script type="text/javascript" src="dist/js/mcxui.min.js"></script>
 		<style>
-			button{
+			button {
 				font-size: 13px;
 				border: none;
 				background-color: #E2E2E2;
@@ -81,7 +82,7 @@
 		
 		//可设置的参数
 		//width: 260,  //默认宽
-		//height: 144,  //默认高
+		//height: 146,  //默认高
 		//title："信息",  //标题。默认为"信息"
 		//showClose: true,  //是否显示关闭按钮。默认true
 		//shadeClose: true,  //点击阴影是否可关闭。默认false
@@ -134,7 +135,7 @@
 		
 		//可设置的参数
 		//width: 260,  //默认宽
-		//height: 144,  //默认高
+		//height: 146,  //默认高
 		//title："信息",  //标题。默认为"信息"
 		//btn: ["确定", "取消"],  //按钮。默认["确定"，"取消"]
 		//showClose: true,  //是否显示关闭按钮。默认true
@@ -247,7 +248,7 @@
 					background: "#009F95"
 				},
 				//html内容
-				content: "hi, 我是layer层&nbsp;&nbsp;&nbsp;<button id=\"btn\">点我</button>",
+				content: "<div style='padding: 18px;'>hi, 我是layer层&nbsp;&nbsp;&nbsp;<button id=\"btn\">点我</button></div>",
 				//layer层添加到document后回调
 				afterLoad: function(){
 					document.getElementById("btn").onclick=function(){
@@ -260,7 +261,7 @@
             mcxui.dialog.layer({
                 title: "可手动关闭的层",
                 //html内容
-                content: "hi, 我是layer层&nbsp;&nbsp;&nbsp;<button id=\"btn\">点我关闭</button>",
+                content: "<div style='padding: 18px;'>hi, 我是layer层&nbsp;&nbsp;&nbsp;<button id=\"btn\">点我关闭</button></div>",
                 //layer层添加到document后回调
                 afterLoad: function(){
                     document.getElementById("btn").onclick=function(){
@@ -349,20 +350,22 @@
 		//type: 1,  //加载类型 1，2。默认1
 		//animationType: "zoom"  //动画：zoom，fade。默认zoom
 		document.getElementById("button-loading").onclick = function(){
-			mcxui.dialog.loading();
+			mcxui.dialog.loading({src: "dist/img"});
 		};
 		document.getElementById("button-loading-type").onclick = function(){
 			mcxui.dialog.loading({
+				src: "dist/img",
 				type: 2
 			});
 		};
 		document.getElementById("button-loading-hint").onclick = function(){
 			mcxui.dialog.loading({
+				src: "dist/img",
 				hint: "加载中..."
 			});
 		};
 		document.getElementById("button-loading-close").onclick = function(){
-			mcxui.dialog.loading();
+			mcxui.dialog.loading({src: "dist/img"});
 			setTimeout(function(){
 				mcxui.dialog.closeLoading();  //关闭所有已经显示的loading层
 			}, 3000);

@@ -1,0 +1,289 @@
+button, input, select, textarea {
+	font-family: inherit;
+	font-size: inherit;
+	outline: none;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+/*input textarea*/
+.mcxui-input, .mcxui-textarea {
+	display: block;
+	width: 100%;
+	border-radius: 2px;
+	border: 1px solid #D2D2D2;
+	box-shadow: inset 0 0 5px #F2F2F2;
+	background-color: #FFFFFF;
+}
+.mcxui-input {
+	height: 34px;
+	line-height: 34px;
+	padding: 0 10px;
+	color: #333333;
+	-webkit-transition: border-color ease-in-out .15s, box-shadow  ease-in-out .15s;
+	transition: border-color ease-in-out .15s, box-shadow  ease-in-out .15s;
+}
+.mcxui-textarea {
+	padding: 10px;
+	color: #333333;
+	-webkit-transition: border-color ease-in-out .15s, box-shadow  ease-in-out .15s;
+	transition: border-color ease-in-out .15s, box-shadow  ease-in-out .15s;
+}
+.mcxui-input:focus,
+.mcxui-textarea:focus {
+	border: 1px solid #1E90FF;
+	box-shadow: 0 0 8px #63B8FF;
+}
+.mcxui-input.disabled, .mcxui-textarea.disabled {
+	cursor: no-drop;
+	background-color: #EEEEEE;
+}
+.mcxui-input.disabled:focus,
+.mcxui-textarea.disabled:focus {
+	border: 1px solid #D2D2D2;
+	box-shadow: inset 0 0 5px #F2F2F2;
+}
+.mcxui-input[readonly],
+.mcxui-textarea[readonly] {
+	background-color: #FBFBFB;
+}
+.mcxui-select, .mcxui-checkbox, .mcxui-radio {
+	display: none;
+}
+/*select*/
+.mcxui-select-wrap {
+	position: relative;
+}
+.mcxui-select-wrap .select-arrow {
+	position: absolute;
+	top: 12px;
+	right: 10px;
+	display: inline-block;
+	width: 12px;
+	height: 8px;
+	background: url(../img/select_arrow1.png) no-repeat;
+}
+.mcxui-select-wrap .select-input {
+	display: block;
+	width: 100%;
+	height: 34px;
+	line-height: 34px;
+	padding: 0 10px;
+	border-radius: 2px;
+	border: 1px solid #D2D2D2;
+	background-color: #FFFFFF;
+	-webkit-transition: border-color ease-in-out .15s, box-shadow  ease-in-out .15s;
+	transition: border-color ease-in-out .15s, box-shadow  ease-in-out .15s;
+}
+.mcxui-select-wrap .select-input:focus {
+	border: 1px solid #2E8B57;
+	box-shadow: 0 0 8px #5FB878;
+}
+.mcxui-select-wrap .mcxui-options {
+	position: absolute;
+	top: 35px;
+	z-index: 999;
+	width: 100%;
+	max-height: 200px;
+	border: 1px solid #D2D2D2;
+	border-top: none;
+	display: none;
+	overflow: auto;
+	background-color: #FFFFFF;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.mcxui-options .mcxui-option {
+	height: 30px;
+	line-height: 30px;
+	padding: 0 10px;
+}
+.mcxui-options .mcxui-option:hover {
+	background-color: #F2F2F2;
+}
+.mcxui-options .mcxui-option.selected {
+	color: #FFFFFF;
+	background-color: #2E8B57;
+}
+/*checkbox radio*/
+.mcxui-checkbox-wrap, .mcxui-radio-wrap {
+	display: inline-block;
+	cursor: pointer;
+}
+.mcxui-checkbox-wrap i, .mcxui-radio-wrap i {
+	font-size: 16px;
+	color: #333333;
+}
+.mcxui-checkbox-wrap i:hover,
+.mcxui-radio-wrap i:hover {
+	color: #2E8B57;
+}
+.mcxui-checkbox-wrap i.icon-checkbox-checked,
+.mcxui-radio-wrap i.icon-radio-checked {
+	color: #2E8B57;
+}
+.mcxui-checkbox-wrap span,
+.mcxui-radio-wrap span {
+	float: right;
+	margin-top: -1px;
+	padding: 0 16px 0 10px;
+}
+.mcxui-radio-wrap.disabled,
+.mcxui-checkbox-wrap.disabled {
+	color: #C9C9C9;
+	cursor: no-drop;
+}
+.mcxui-radio-wrap.disabled i,
+.mcxui-checkbox-wrap.disabled i {
+	color: #C9C9C9 !important;
+}
+/*form*/
+.mcxui-form-item {
+	position: relative;
+	margin-bottom: 15px;
+}
+.mcxui-form-item label {
+	display: inline-block;
+}
+.mcxui-form-item .mcxui-hint-block {
+	display: inline-block;
+	position: absolute;
+	margin-top: 2px;
+	margin-left: 2px;
+	color: #999999;
+	font-size: 12px;
+}
+.mcxui-form label {
+	height: 28px;
+	line-height: 28px;
+}
+.mcxui-form-horizontal label {
+	height: 34px;
+	line-height: 34px;
+}
+.mcxui-form-horizontal .mcxui-form-item {
+	display: inline-block;
+	margin: 10px 5px;
+}
+.mcxui-form-horizontal label {
+	padding-right: 5px;
+}
+.mcxui-form-horizontal .mcxui-input,
+.mcxui-form-horizontal .mcxui-textarea,
+.mcxui-form-horizontal .mcxui-radios,
+.mcxui-form-horizontal .mcxui-checkboxs,
+.mcxui-form-horizontal .mcxui-select-wrap {
+	display: inline-block;
+	width: auto;
+}
+.mcxui-form-vertical .mcxui-form-item {
+	margin-bottom: 20px;
+}
+.mcxui-form-vertical .mcxui-form-label {
+	float: left;
+	width: 90px;
+	height: 34px;
+	line-height: 34px;
+	padding: 0 10px;
+	text-align: right;
+	vertical-align: top;
+}
+.mcxui-form-vertical .mcxui-input-block {
+	margin-left: 110px;
+}
+.mcxui-form-vertical .mcxui-checkboxs, 
+.mcxui-form-vertical .mcxui-radios {
+	height: 34px;
+	line-height: 34px;
+	margin-left: 110px;
+}
+.mcxui-form-vertical .mcxui-item-inline {
+	display: inline-block;
+	vertical-align: top;
+}
+.mcxui-form-vertical .mcxui-item-inline .mcxui-input,
+.mcxui-form-vertical .mcxui-item-inline .mcxui-textarea {
+	display: inline-block;
+	width: auto;
+}
+.mcxui-form-vertical .mcxui-hint-block {
+	margin-left: 112px;
+}
+/*status*/
+.mcxui-form-item.success .mcxui-input, 
+.mcxui-form-item.success .mcxui-textarea
+{
+	border: 1px solid #2E8B57;
+	box-shadow: 0 0 8px #5FB878;
+}
+.mcxui-form-item.success .mcxui-hint-block {
+	color: #2E8B57;
+}
+.mcxui-form-item.warning .mcxui-input, 
+.mcxui-form-item.warning .mcxui-textarea
+{
+	border: 1px solid #F0AD4E;
+	box-shadow: 0 0 8px #F0AD4E;
+}
+.mcxui-form-item.warning .mcxui-hint-block {
+	color: #F0AD4E;
+}
+.mcxui-form-item.error .mcxui-input, 
+.mcxui-form-item.error .mcxui-textarea
+{
+	border: 1px solid #DD524D;
+	box-shadow: 0 0 8px #EE6363;
+}
+.mcxui-form-item.error .mcxui-hint-block {
+	color: #DD524D;
+}
+/*animation*/
+.arrow-rotate-clockwise {
+	-webkit-animation-name: clockwise-rotate;
+	-webkit-animation-duration: .3s;
+	-webkit-animation-fill-mode: both;
+	animation-name: clockwise-rotate;
+	animation-duration: .3s;
+	animation-fill-mode: both;
+}
+.arrow-rotate-anticlockwise {
+	-webkit-animation-name: anticlockwise-rotate;
+	-webkit-animation-duration: .3s;
+	-webkit-animation-fill-mode: both;
+	animation-name: anticlockwise-rotate;
+	animation-duration: .3s;
+	animation-fill-mode: both;
+}
+@-webkit-keyframes clockwise-rotate {
+	from {
+		-webkit-transform: rotateZ(0deg);
+	}
+	to {
+		-webkit-transform: rotateZ(180deg);
+	}
+}
+@-webkit-keyframes anticlockwise-rotate {
+	from {
+		-webkit-transform: rotateZ(180deg);
+	}
+	to {
+		-webkit-transform: rotateZ(0deg);
+	}
+}
+@keyframes clockwise-rotate {
+	from {
+		transform: rotateZ(0deg);
+	}
+	to {
+		transform: rotateZ(180deg);
+	}
+}
+@keyframes anticlockwise-rotate {
+	from {
+		transform: rotateZ(180deg);
+	}
+	to{
+		transform: rotateZ(0deg);
+	}
+}

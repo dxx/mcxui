@@ -1,0 +1,36 @@
+html,body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: "微软雅黑";
+}
+.left {
+	float: left;
+	width: 200px;
+	height: 100%;
+}
+.right {
+	height: 100%;
+	margin-left: 200px;
+	padding-bottom: 50px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.right .main-iframe {
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+.foot {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	color: #555555;
+}
