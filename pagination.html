@@ -100,13 +100,21 @@
 			 * 点击时会增加name为pageNumber和pageSize两个隐藏域元素，然后提交form
 			 * 注意：onsubmit事件只有采用原始事件绑定模式才有效
 			 */
-			form: "pageForm"
+			form: "pageForm",
+			pageParam: {  //分页参数
+				pageNumber: "pageNumber",  //当前页参数名。默认为pageNumber
+				pageSize: "pageSize"  //每页大小参数名。默认为pageSize
+			}
 		});
 		
 		mcxui.pagination.init("ajaxPagination", {
 			pageNumber: 1,  //当前页
 			pageSize: 10,  //每页大小
 			totalCount: 80,  //总条数
+			pageParam: {  //分页参数
+				pageNumber: "pageNumber",  //当前页参数名。默认为pageNumber
+				pageSize: "pageSize"  //每页大小参数名。默认为pageSize
+			},
 			ajax: {
 				url: "json/pagedata.json",  //ajax请求url
 				type: "GET",  //请求方式。GET或POST，默认为POST

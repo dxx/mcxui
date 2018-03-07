@@ -7,7 +7,11 @@
 			pageSize: 10,
 			totalCount: 10,
 			pages: 5,
-			form: ""
+			form: "",
+			pageParam: {
+				pageNumber: "pageNumber",
+				pageSize: "pageSize"
+			}
 		}
 		var ajax = {
 			url: "",
@@ -504,15 +508,16 @@
 		_formSubmit: function() {
 			var pageForm = document.getElementById(this.options.form);
 			if (pageForm) {
-				var numberInput = pageForm.querySelector("input[type='hidden'][name='pageNumber']");
-				var sizeInput = pageForm.querySelector("input[type='hidden'][name='pageSize']");
+				var pageParam = this.options.pageParam;
+				var numberInput = pageForm.querySelector("input[type='hidden'][name='" + pageParam.pageNumber + "']");
+				var sizeInput = pageForm.querySelector("input[type='hidden'][name='" + pageParam.pageSize + "']");
 				if (numberInput == null && sizeInput == null) {
 					numberInput = document.createElement("input");
 					sizeInput = document.createElement("input");
 					numberInput.type  = "hidden";
 					sizeInput.type  = "hidden";
-					numberInput.name = "pageNumber";
-					sizeInput.name = "pageSize";
+					numberInput.name = pageParam.pageNumber;
+					sizeInput.name = pageParam.pageSize;
 					pageForm.insertBefore(sizeInput, pageForm.firstChild);
 					pageForm.insertBefore(numberInput, pageForm.firstChild);
 				}
@@ -530,11 +535,12 @@
 		_ajax: function(page, opt, target) {
 			var ajax = this.options.ajax;
 			var url = ajax.url;
+			var pageParam = this.options.pageParam;
 			var data = {};
 			this.options.ajax.before(data);
 			if (ajax.type.toUpperCase() == "POST") {
-				data.pageNumber = page.pageNumber;
-				data.pageSize = page.pageSize;
+				data[pageParam.pageNumber] = page.pageNumber;
+				data[pageParam.pageSize] = page.pageSize;
 				
 				if (this.options.ajax.contentType == "application/x-www-form-urlencoded") {
 					var params = [];
@@ -558,8 +564,8 @@
 				for (var key in data) {
 					p.push(key + "=" + data[key]);
 				}
-				p.push("pageNumber=" + page.pageNumber);
-				p.push("pageSize=" + page.pageSize);
+				p.push(pageParam.pageNumber + "=" + page.pageNumber);
+				p.push(pageParam.pageSize + "=" + page.pageSize);
 				var param = p.join("&");
 				
 				var separator = "";
