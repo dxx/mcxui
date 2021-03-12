@@ -1,7 +1,7 @@
 # mcxui
 Web UI framework.
 
-Preview address https://code-mcx.github.io/mcxui.
+Preview address https://dxx.github.io/mcxui.
 
 # Description
 This UI framework use native javascript to write.It's small in size,simple to use.
